@@ -1,0 +1,1 @@
+Flash Kana is a flashcard app to help you learn your Japanese kana. Wow.
