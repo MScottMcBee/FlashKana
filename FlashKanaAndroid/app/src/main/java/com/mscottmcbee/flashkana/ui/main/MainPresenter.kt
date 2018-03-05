@@ -12,7 +12,4 @@ class MainPresenter( val view: MainContract.View)
     override fun setup(){
     }
 
-    override fun onHiraganaClicked() {
-    }
-
 }

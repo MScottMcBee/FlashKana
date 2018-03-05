@@ -7,11 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
-import com.mscottmcbee.flashkana.model.KanaObject
 import com.mscottmcbee.flashkana.ui.kanaview.KanaViewActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment() : Fragment(), MainContract.View {
+class MainFragment : Fragment(), MainContract.View {
 
     override lateinit var presenter: MainContract.Presenter
 
@@ -29,13 +28,21 @@ class MainFragment() : Fragment(), MainContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         main_fragment_hiragana_button.setOnClickListener { _ ->
-            val intent = Intent(context, KanaViewActivity::class.java)
-            intent.putExtra(KanaViewActivity.SECRET_MESSAGE,"ur a damn nerd")
-            startActivity(intent)
+            onFlashCardSetClicked(1)
+        }
+        main_fragment_katakana_button.setOnClickListener { _ ->
+            onFlashCardSetClicked(2)
         }
 
         presenter.setup()
+    }
+
+    fun onFlashCardSetClicked(id: Int){
+        val intent = Intent(context, KanaViewActivity::class.java)
+        intent.putExtra(KanaViewActivity.Model_ID,id)
+        startActivity(intent)
     }
 
 }
