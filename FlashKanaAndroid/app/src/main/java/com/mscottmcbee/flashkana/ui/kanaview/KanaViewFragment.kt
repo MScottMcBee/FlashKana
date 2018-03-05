@@ -9,14 +9,13 @@ import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.KanaObject
 import kotlinx.android.synthetic.main.fragment_kana_view.*
 
-class KanaViewFragment() : Fragment(), KanaViewContract.View {
+class KanaViewFragment : Fragment(), KanaViewContract.View {
 
     override lateinit var presenter: KanaViewContract.Presenter
 
     companion object {
         fun newInstance(): KanaViewFragment {
-            var fragment = KanaViewFragment()
-            return fragment
+            return KanaViewFragment()
         }
     }
 

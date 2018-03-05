@@ -1,20 +1,20 @@
 package com.mscottmcbee.flashkana.ui.kanaview
 
-import com.mscottmcbee.flashkana.model.HiraganaModel
+import com.mscottmcbee.flashkana.model.IFlashCardModel
 
-class KanaViewPresenter(val view: KanaViewContract.View)
+class KanaViewPresenter(val view: KanaViewContract.View, val flashCardSet: IFlashCardModel)
     : KanaViewContract.Presenter {
 
     init {
         view.presenter = this
     }
 
-    override fun setup(){
-        view.showKana(HiraganaModel.getRandomHiragana())
+    override fun setup() {
+        view.showKana(flashCardSet.getRandomCard())
     }
 
     override fun onMainClicked() {
-        view.showKana(HiraganaModel.getRandomHiragana())
+        view.showKana(flashCardSet.getRandomCard())
     }
 
 }

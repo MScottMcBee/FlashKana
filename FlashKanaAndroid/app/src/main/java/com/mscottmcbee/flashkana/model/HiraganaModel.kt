@@ -1,9 +1,10 @@
 package com.mscottmcbee.flashkana.model
 
-
-class HiraganaModel{
+class HiraganaModel() : IFlashCardModel{
 
     companion object {
+
+        lateinit var instance: HiraganaModel
 
         var hiragana: Array<KanaObject> = arrayOf(
                 KanaObject("あ", "a"),
@@ -11,7 +12,6 @@ class HiraganaModel{
                 KanaObject("う", "u"),
                 KanaObject("え", "e"),
                 KanaObject("お", "o"),
-                KanaObject("え", "e"),
                 KanaObject("か", "ka"),
                 KanaObject("き", "ki"),
                 KanaObject("く", "ku"),
@@ -55,10 +55,14 @@ class HiraganaModel{
                 KanaObject("ん", "n")
         )
 
-        fun getRandomHiragana():KanaObject{
-            return hiragana[(Math.random()* hiragana.size).toInt()]
-        }
 
     }
 
+    override fun getRandomCard():KanaObject{
+        return hiragana[(Math.random()* hiragana.size).toInt()]
+    }
+
+    override fun getSetName(): String {
+        return "Hiragana"
+    }
 }

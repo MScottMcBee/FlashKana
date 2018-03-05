@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">FlashKana</string>
 
-    <string name="main_hiragana_button">Learn you some hEcKiN Hiragana(ひらがな)</string>
+    <string name="main_hiragana_button">View Hiragana(ひらがな)</string>
+    <string name="main_katakana_button">View Katkana(カタカナ)</string>
 
     <string name="kana_view_another_button">Look at another</string>
 
-    <string name="kana_view_hiragana_title">Hiragana</string>
 
 </resources>

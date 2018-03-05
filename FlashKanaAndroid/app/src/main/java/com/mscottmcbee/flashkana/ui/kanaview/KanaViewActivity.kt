@@ -4,23 +4,27 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.mscottmcbee.flashkana.R
+import com.mscottmcbee.flashkana.model.IFlashCardModel
+import com.mscottmcbee.flashkana.model.ModelProvider
 import com.mscottmcbee.flashkana.ui.ActivityUtils
 
 class KanaViewActivity : AppCompatActivity() {
 
     companion object {
-        val SECRET_MESSAGE: String = ""
+        val Model_ID: String = "model_id"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kana_view)
-        Log.d("KanaViewActivity",intent.getStringExtra(SECRET_MESSAGE))
+        val id = intent.getIntExtra(Model_ID,0)
 
-        title = getString(R.string.kana_view_hiragana_title)
+        var flashCardSet :IFlashCardModel = ModelProvider.instance.getModelByID(id)!!
+
+        title = flashCardSet.getSetName()
 
         val fragment: KanaViewFragment = KanaViewFragment.newInstance()
-        val presenter = KanaViewPresenter(fragment)
+        val presenter = KanaViewPresenter(fragment, flashCardSet)
 
         ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.kana_view_fragment_holder)
     }
