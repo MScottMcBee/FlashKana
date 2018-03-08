@@ -25,6 +25,7 @@ class QuizViewFragment : Fragment(), QuizViewContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         fragment_quiz_view_answer1.setOnClickListener { _ ->
             presenter.onAnswerClicked(0)
         }
@@ -45,16 +46,12 @@ class QuizViewFragment : Fragment(), QuizViewContract.View {
         fragment_quiz_view_glyph.text = kanaObject.glyph
     }
 
-    override fun showAnswer1(answer: String){
-        fragment_quiz_view_answer1.text = answer
-    }
-    override fun showAnswer2(answer: String){
-        fragment_quiz_view_answer2.text = answer
-    }
-    override fun showAnswer3(answer: String){
-        fragment_quiz_view_answer3.text = answer
-    }
-    override fun showAnswer4(answer: String){
-        fragment_quiz_view_answer4.text = answer
+    override fun showAnswer(answer: String, index: Int) {
+        when (index) {
+            0 -> fragment_quiz_view_answer1.text = answer
+            1 -> fragment_quiz_view_answer2.text = answer
+            2 -> fragment_quiz_view_answer3.text = answer
+            3 -> fragment_quiz_view_answer4.text = answer
+        }
     }
 }

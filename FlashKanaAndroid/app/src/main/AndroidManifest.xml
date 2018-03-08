@@ -27,7 +27,6 @@
         </activity>
         <activity
             android:name=".ui.quizview.QuizViewActivity"
-            android:label="@string/"
             android:parentActivityName=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

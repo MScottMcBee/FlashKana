@@ -8,86 +8,70 @@ import java.util.*
 class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlashCardModel)
     : QuizViewContract.Presenter {
 
-    val totalQuestions = 20
+    companion object {
+        const val TOTAL_QUESTIONS = 10
+    }
+
     var currentQuestion = 1
     var numCorrect = 0
     var numIncorrect = 0
-    var isAnswerCorrect = mutableListOf(false, false, false, false)
-    var showAnswers: MutableList<(String) -> Unit> = mutableListOf()
+    var correctAnswer = -1
+    val kanaUsed = mutableListOf<String>("", "", "", "")
 
     init {
         view.presenter = this
-        showAnswers.add({answer: String -> view.showAnswer1(answer)})
-        showAnswers.add({answer: String -> view.showAnswer2(answer)})
-        showAnswers.add({answer: String -> view.showAnswer3(answer)})
-        showAnswers.add({answer: String -> view.showAnswer4(answer)})
     }
 
     override fun setup() {
         resetQuestion()
     }
 
-    override fun onCorrectClicked() {
-        view.showKana(flashCardSet.getRandomCard())
-    }
-
-    override fun onIncorrectClicked() {
-        view.showKana(flashCardSet.getRandomCard())
-    }
-
-    override fun onAnswerClicked(answerNumber: Int) {
-        if(isAnswerCorrect[answerNumber]){
+    override fun onAnswerClicked(index: Int) {
+        if (correctAnswer == index && kanaUsed[index] != "") { //if the answer is right and buttons haven't already been cleared
             numCorrect++
             currentQuestion++
-            if(currentQuestion >= totalQuestions){
+            if (currentQuestion >= TOTAL_QUESTIONS) {
                 view.showKana(KanaObject(numCorrect.toString(), ""))
-            }else {
+                for (i in 0..3) {
+                    kanaUsed[i] = ""
+                    view.showAnswer("", i)
+                }
+            } else {
                 resetQuestion()
             }
-        } else{
+        } else if (kanaUsed[index] != "") { //if the answer is wrong and buttons haven't already been cleared
             numIncorrect++
-            numCorrect-- //note users can decrement numCorrect by continuously selecting the wrong answer
-            (0..3).forEach {
-                if(!isAnswerCorrect[it]){
-                    showAnswers[it]("")
+            numCorrect--
+            for (i in 0..3) {
+                if (correctAnswer != i) {
+                    kanaUsed[i] = ""
+                    view.showAnswer("", i)
                 }
             }
         }
     }
 
-    fun resetQuestion(){
-        Log.i("", "resetQuestion()")
+    fun resetQuestion() {
         //set each answer to random wrong ones that are all different
         //note: this requires flash card models to have at least 4 kana objects
-        val kanaUsed = mutableListOf<String>("", "", "", "")
-        (0..3).forEach {
-            Log.i("", "foreach set wrong for ${kanaUsed.toString()} at $it")
-            do{
-                flashCardSet.getRandomCard().run {
-                    Log.i("", "try ${this.answer}")
-                    showAnswers[it](this.answer)
-                    kanaUsed[it] = this.answer
-                }
-            }while(it != 0 && kanaUsed.subList(0, it).contains(kanaUsed[it]))
-            isAnswerCorrect[it] = false
-        }
-        //choose a random answer then pair it with a random glyph that isn't being used
-        Random().nextInt(3).also {
-            Log.i("", "set answer " + it)
-            isAnswerCorrect[it] = true
-            kanaUsed[it] = ""
+        for (i in 0..3) {
             do {
-                Log.i("", "try " + kanaUsed.toString())
-                with(flashCardSet.getRandomCard()) {
-                    Log.i("", "try " + this.answer)
-                    if(!kanaUsed.contains(this.answer)) {
-                        view.showKana(this)
-                        showAnswers[it](this.answer)
-                        kanaUsed[it] = this.answer
-                    }
-                }
-            }while(kanaUsed[it] == "")
+                val kana = flashCardSet.getRandomCard().answer
+                view.showAnswer(kana, i)
+                kanaUsed[i] = kana
+            } while (i != 0 && kanaUsed.subList(0, i).contains(kanaUsed[i]))
         }
+
+        //choose a random answer then pair it with a random glyph that isn't being used
+        correctAnswer = Random().nextInt(3)
+        kanaUsed[correctAnswer] = ""
+        var kanaSet: KanaObject
+        do {
+            kanaSet = flashCardSet.getRandomCard()
+        } while (kanaUsed.contains(kanaSet.answer))
+        view.showKana(kanaSet)
+        view.showAnswer(kanaSet.answer, correctAnswer)
+        kanaUsed[correctAnswer] = kanaSet.answer
     }
 
 }

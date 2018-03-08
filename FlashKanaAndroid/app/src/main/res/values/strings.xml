@@ -2,10 +2,10 @@
     <string name="app_name">FlashKana</string>
 
     <string name="main_hiragana_button">View Hiragana(ひらがな)</string>
-    <string name="main_katakana_button">View Katkana(カタカナ)</string>
+    <string name="main_katakana_button">View Katakana(カタカナ)</string>
 
     <string name="main_hiragana_quiz_button">Test Hiragana(ひらがな)</string>
-    <string name="main_katakana_quiz_button">Test Katkana(カタカナ)</string>
+    <string name="main_katakana_quiz_button">Test Katakana(カタカナ)</string>
 
     <string name="kana_view_another_button">Look at another</string>
     <string name="quiz_view_another_button">Look at another</string>
