@@ -4,6 +4,7 @@ import android.app.Application
 import com.mscottmcbee.flashkana.model.HiraganaModel
 import com.mscottmcbee.flashkana.model.KatakanaModel
 import com.mscottmcbee.flashkana.model.ModelProvider
+import com.mscottmcbee.flashkana.model.TestingModel
 
 class FKApplication : Application() {
 
@@ -11,6 +12,7 @@ class FKApplication : Application() {
 
         HiraganaModel.instance = HiraganaModel()
         KatakanaModel.instance = KatakanaModel()
+        TestingModel.instance = TestingModel()
         ModelProvider.instance = ModelProvider()
 
         super.onCreate()

@@ -10,6 +10,7 @@ class ModelProvider() {
         when(id){
             1 -> return HiraganaModel.instance
             2 -> return KatakanaModel.instance
+            3 -> return TestingModel.instance
         }
         return null
     }
