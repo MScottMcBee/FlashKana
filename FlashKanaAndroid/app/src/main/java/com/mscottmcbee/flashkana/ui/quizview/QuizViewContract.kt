@@ -12,6 +12,6 @@ interface QuizViewContract {
 
     interface Presenter {
         fun setup()
-        fun onAnswerClicked(Index: Int)
+        fun onAnswerClicked(index: Int)
     }
 }

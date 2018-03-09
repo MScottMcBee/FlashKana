@@ -1,6 +1,7 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import com.mscottmcbee.flashkana.BaseView
+import com.mscottmcbee.flashkana.ui.main.MainRecyclerInterface
 
 interface MainContract{
 
@@ -8,5 +9,6 @@ interface MainContract{
 
     interface Presenter {
         fun setup()
+        fun getRecyclerHandler():MainRecyclerInterface
     }
 }

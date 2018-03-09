@@ -1,15 +1,28 @@
 package com.mscottmcbee.flashkana.ui.main
 
-import com.mscottmcbee.flashkana.model.HiraganaModel
+import android.util.Log
+import com.mscottmcbee.flashkana.ui.main.MainRecyclerInterface
 
 class MainPresenter( val view: MainContract.View)
-    : MainContract.Presenter {
+    : MainContract.Presenter, MainRecyclerInterface {
 
-    init {
-        view.presenter = this
-    }
+        init {
+            view.presenter = this
+        }
 
-    override fun setup(){
-    }
+        override fun setup() {
+        }
+
+        override fun aaa(index: Int) {
+            Log.d("AAA", "Hello, $index")
+        }
+
+        override fun bbb(index: Int) {
+            Log.d("AAA", "Goodbye, $index")
+        }
+
+        override fun getRecyclerHandler(): MainRecyclerInterface {
+            return this
+        }
 
 }
