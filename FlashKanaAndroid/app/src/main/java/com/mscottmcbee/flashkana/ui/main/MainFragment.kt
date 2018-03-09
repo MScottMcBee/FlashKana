@@ -45,18 +45,18 @@ class MainFragment : Fragment(), MainContract.View {
 
             presenter.setup()
         }
+    }
 
-        fun onFlashCardSetClicked(id: Int) {
-            val intent = Intent(context, KanaViewActivity::class.java)
-            intent.putExtra(KanaViewActivity.Model_ID, id)
-            startActivity(intent)
-        }
+    override fun onFlashCardSetClicked(id: Int) {
+        val intent = Intent(context, KanaViewActivity::class.java)
+        intent.putExtra(KanaViewActivity.Model_ID, id)
+        startActivity(intent)
+    }
 
-        fun onFlashQuizSetClicked(id: Int) {
-            val intent = Intent(context, QuizViewActivity::class.java)
-            intent.putExtra(KanaViewActivity.Model_ID, id)
-            startActivity(intent)
-        }
+    override fun onFlashQuizSetClicked(id: Int) {
+        val intent = Intent(context, QuizViewActivity::class.java)
+        intent.putExtra(KanaViewActivity.Model_ID, id)
+        startActivity(intent)
     }
 
 }

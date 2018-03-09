@@ -1,6 +1,7 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import android.util.Log
+import android.view.View
 import com.mscottmcbee.flashkana.ui.main.MainRecyclerInterface
 
 class MainPresenter( val view: MainContract.View)
@@ -12,6 +13,19 @@ class MainPresenter( val view: MainContract.View)
 
         override fun setup() {
         }
+
+    override fun goToFlashCardView(id:Int){
+        view.onFlashCardSetClicked(id)
+    }
+
+    override fun goToFlashCardQuiz(id: Int){
+        view.onFlashQuizSetClicked(id)
+    }
+
+    override fun goToFlashCardMultiple(id: Int){
+        Log.d("AAA", "goToFlashCardMultiple, $id")
+    }
+
 
         override fun aaa(index: Int) {
             Log.d("AAA", "Hello, $index")

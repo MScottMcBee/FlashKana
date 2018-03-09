@@ -63,4 +63,8 @@ class KatakanaModel() : IFlashCardModel{
     override fun getSetName(): String {
         return "Katakana"
     }
+
+    override fun getSetDescription(): String {
+        return "The first 50 katakana gojuin"
+    }
 }

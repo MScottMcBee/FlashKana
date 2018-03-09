@@ -30,7 +30,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
         if (correctAnswer == index && kanaUsed[index] != "") { //if the answer is right and buttons haven't already been cleared
             numCorrect++
             currentQuestion++
-            if (currentQuestion >= TOTAL_QUESTIONS) {
+            if (currentQuestion > TOTAL_QUESTIONS) {
                 view.showKana(KanaObject(numCorrect.toString(), ""))
                 for (i in 0..3) {
                     kanaUsed[i] = ""

@@ -28,4 +28,8 @@ class TestingModel() : IFlashCardModel {
     override fun getSetName(): String {
         return "Testing"
     }
+
+    override fun getSetDescription(): String {
+        return "This is a test"
+    }
 }

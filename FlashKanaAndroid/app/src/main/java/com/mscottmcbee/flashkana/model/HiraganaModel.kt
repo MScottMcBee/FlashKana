@@ -65,4 +65,8 @@ class HiraganaModel() : IFlashCardModel{
     override fun getSetName(): String {
         return "Hiragana"
     }
+
+    override fun getSetDescription(): String {
+        return "The first 50 hiragana gojuin"
+    }
 }
