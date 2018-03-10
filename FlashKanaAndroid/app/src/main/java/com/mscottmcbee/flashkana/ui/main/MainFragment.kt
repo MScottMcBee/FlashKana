@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 class MainFragment : Fragment(), MainContract.View {
 
     override lateinit var presenter: MainContract.Presenter
-    private lateinit var linearLayoutManager: LinearLayoutManager
 
     companion object {
         //https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment/9245510#9245510
@@ -33,9 +32,6 @@ class MainFragment : Fragment(), MainContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        /*linearLayoutManager = LinearLayoutManager(this)
-        recyclerview_main.layoutManager = linearLayoutManager*/
 
         var mainAdapter = MainRecyclerAdapter()
         mainAdapter.setMainRecyclerInterface(presenter.getRecyclerHandler())
@@ -57,6 +53,10 @@ class MainFragment : Fragment(), MainContract.View {
         val intent = Intent(context, QuizViewActivity::class.java)
         intent.putExtra(KanaViewActivity.Model_ID, id)
         startActivity(intent)
+    }
+
+    override fun closePopouts(){
+        (recyclerview_main.adapter as MainRecyclerAdapter).closeEveryPopout()
     }
 
 }

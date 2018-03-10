@@ -8,4 +8,5 @@ interface MainRecyclerInterface {
     fun goToFlashCardView(id:Int)
     fun goToFlashCardQuiz(id:Int)
     fun goToFlashCardMultiple(id: Int)
+    fun closeAllPopouts()
 }

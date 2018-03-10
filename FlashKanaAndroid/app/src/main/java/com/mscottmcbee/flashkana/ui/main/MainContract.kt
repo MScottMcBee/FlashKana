@@ -8,6 +8,7 @@ interface MainContract{
     interface View : BaseView<Presenter>{
         fun onFlashCardSetClicked(id: Int)
         fun onFlashQuizSetClicked(id: Int)
+        fun closePopouts();
     }
 
     interface Presenter {

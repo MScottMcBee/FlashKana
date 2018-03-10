@@ -10,7 +10,11 @@ import kotlinx.android.synthetic.main.recycleitem_main.view.*
 
 class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view){
 
-    fun bind(index :Int, mainRecyclerInterface: MainRecyclerInterface?){
+    var mainRecyclerInterface: MainRecyclerInterface? = null
+
+    fun bind(index :Int, recyclerInterface: MainRecyclerInterface?){
+        mainRecyclerInterface = recyclerInterface
+        closePopout()
         view.recycleitem_main_title.text = ModelProvider.instance.getTitle(index)//TODO do these need to be de-coupled?
         view.recycleitem_main_description.text = ModelProvider.instance.getDescription(index)
         view.recycleitem_main_popout_view.setOnClickListener { mainRecyclerInterface?.goToFlashCardView(index) }
@@ -20,10 +24,19 @@ class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view){
         view.recycleitem_main_button.setOnClickListener {
             with(view.recycleitem_main_popout){
                 when(visibility){
-                    View.VISIBLE -> visibility = View.GONE
-                    View.GONE -> visibility = View.VISIBLE
+                    View.VISIBLE -> closePopout()
+                    View.GONE -> openPopout()
                 }
             }
         }
+    }
+
+    fun closePopout(){
+        view.recycleitem_main_popout.visibility = View.GONE
+    }
+
+    private fun openPopout(){
+        mainRecyclerInterface?.closeAllPopouts()
+        view.recycleitem_main_popout.visibility = View.VISIBLE
     }
 }
