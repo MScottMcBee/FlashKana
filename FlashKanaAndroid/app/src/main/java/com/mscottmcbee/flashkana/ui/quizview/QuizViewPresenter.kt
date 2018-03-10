@@ -17,6 +17,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
     var numIncorrect = 0
     var correctAnswer = -1
     val kanaUsed = mutableListOf<String>("", "", "", "")
+    var lastKana = ""
 
     init {
         view.presenter = this
@@ -34,7 +35,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
                 view.showKana(KanaObject(numCorrect.toString(), ""))
                 for (i in 0..3) {
                     kanaUsed[i] = ""
-                    view.showAnswer("", i)
+                    view.fadeoutAnswer(i)
                 }
             } else {
                 resetQuestion()
@@ -45,7 +46,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
             for (i in 0..3) {
                 if (correctAnswer != i) {
                     kanaUsed[i] = ""
-                    view.showAnswer("", i)
+                    view.fadeoutAnswer(i)
                 }
             }
         }
@@ -63,12 +64,14 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
         }
 
         //choose a random answer then pair it with a random glyph that isn't being used
+        //note: this requires flash card models to have at least 5 kana objects
         correctAnswer = Random().nextInt(3)
         kanaUsed[correctAnswer] = ""
         var kanaSet: KanaObject
         do {
             kanaSet = flashCardSet.getRandomCard()
-        } while (kanaUsed.contains(kanaSet.answer))
+        } while (kanaUsed.contains(kanaSet.answer) || kanaSet.answer == lastKana)
+        lastKana = kanaSet.answer
         view.showKana(kanaSet)
         view.showAnswer(kanaSet.answer, correctAnswer)
         kanaUsed[correctAnswer] = kanaSet.answer

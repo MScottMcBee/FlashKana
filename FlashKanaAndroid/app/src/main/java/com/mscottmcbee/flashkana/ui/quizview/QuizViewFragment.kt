@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.KanaObject
 import kotlinx.android.synthetic.main.fragment_quiz_view.*
@@ -12,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_quiz_view.*
 class QuizViewFragment : Fragment(), QuizViewContract.View {
 
     override lateinit var presenter: QuizViewContract.Presenter
+    private lateinit var fadeout: Animation
+    private lateinit var fadein: Animation
 
     companion object {
         fun newInstance(): QuizViewFragment {
@@ -39,6 +43,11 @@ class QuizViewFragment : Fragment(), QuizViewContract.View {
             presenter.onAnswerClicked(3)
         }
 
+        fadeout = AnimationUtils.loadAnimation(activity, R.anim.fade_out)
+        fadeout.fillAfter = true
+        fadein = AnimationUtils.loadAnimation(activity, R.anim.fade_in)
+        fadein.fillAfter = true
+
         presenter.setup()
     }
 
@@ -48,10 +57,27 @@ class QuizViewFragment : Fragment(), QuizViewContract.View {
 
     override fun showAnswer(answer: String, index: Int) {
         when (index) {
-            0 -> fragment_quiz_view_answer1.text = answer
-            1 -> fragment_quiz_view_answer2.text = answer
-            2 -> fragment_quiz_view_answer3.text = answer
-            3 -> fragment_quiz_view_answer4.text = answer
+            0 -> fragment_quiz_view_answer1
+            1 -> fragment_quiz_view_answer2
+            2 -> fragment_quiz_view_answer3
+            3 -> fragment_quiz_view_answer4
+            else -> fragment_quiz_view_answer1
+        }.apply{
+            text = answer
+            alpha = 1.0f
+            startAnimation(fadein)
+        }
+    }
+
+    override fun fadeoutAnswer(index: Int){
+        when (index){
+            0 -> fragment_quiz_view_answer1
+            1 -> fragment_quiz_view_answer2
+            2 -> fragment_quiz_view_answer3
+            3 -> fragment_quiz_view_answer4
+            else -> fragment_quiz_view_answer1
+        }.apply{
+            startAnimation(fadeout)
         }
     }
 }
