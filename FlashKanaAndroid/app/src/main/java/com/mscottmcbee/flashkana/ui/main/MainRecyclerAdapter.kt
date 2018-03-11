@@ -24,7 +24,6 @@ class MainRecyclerAdapter() : RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 50
         return ModelProvider.instance.getNumModels()
     }
 
@@ -32,7 +31,7 @@ class MainRecyclerAdapter() : RecyclerView.Adapter<MainViewHolder>() {
         this.mainRecyclerInterface = mainRecyclerInterface
     }
 
-    fun closeEveryPopout(){
+    fun closeAllPopouts(){
         Log.d("aaa", "close 'em")
         for(holder in allViewHolders){
             holder.closePopout()

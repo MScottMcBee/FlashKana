@@ -8,7 +8,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, private val flashCardSe
     : QuizViewContract.Presenter {
 
     companion object {
-        const val TOTAL_QUESTIONS = 5
+        const val TOTAL_QUESTIONS = 10
     }
 
     private var currentQuestion = 1

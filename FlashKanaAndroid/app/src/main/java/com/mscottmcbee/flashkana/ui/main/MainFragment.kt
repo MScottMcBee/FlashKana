@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.ui.kanaview.KanaViewActivity
 import com.mscottmcbee.flashkana.ui.quizview.QuizViewActivity
-import com.mscottmcbee.flashkana.ui.main.MainRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(), MainContract.View {
@@ -56,7 +55,7 @@ class MainFragment : Fragment(), MainContract.View {
     }
 
     override fun closePopouts(){
-        (recyclerview_main.adapter as MainRecyclerAdapter).closeEveryPopout()
+        (recyclerview_main.adapter as MainRecyclerAdapter).closeAllPopouts()
     }
 
 }

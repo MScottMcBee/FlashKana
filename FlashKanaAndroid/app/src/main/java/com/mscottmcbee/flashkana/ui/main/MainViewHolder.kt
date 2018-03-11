@@ -2,8 +2,6 @@ package com.mscottmcbee.flashkana.ui.main
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.view.animation.AnimationUtils
-import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.ModelProvider
 import kotlinx.android.synthetic.main.recycleitem_main.view.*
 
@@ -36,7 +34,7 @@ class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view){
     }
 
     private fun openPopout(){
-        mainRecyclerInterface?.closeAllPopouts()
+        mainRecyclerInterface?.newPopoutOpened()
         view.recycleitem_main_popout.visibility = View.VISIBLE
     }
 }

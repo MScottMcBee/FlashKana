@@ -26,7 +26,7 @@ class MainPresenter( val view: MainContract.View)
         Log.d("AAA", "goToFlashCardMultiple, $id")
     }
 
-    override fun closeAllPopouts() {
+    override fun newPopoutOpened() {
         view.closePopouts()
     }
 
