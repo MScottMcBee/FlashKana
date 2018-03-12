@@ -20,7 +20,7 @@ class MainFragment : Fragment(), MainContract.View {
     companion object {
         //https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment/9245510#9245510
         fun newInstance(): MainFragment {
-            var mainFragment = MainFragment()
+            val mainFragment = MainFragment()
             return mainFragment
         }
     }
@@ -32,7 +32,7 @@ class MainFragment : Fragment(), MainContract.View {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var mainAdapter = MainRecyclerAdapter()
+        val mainAdapter = MainRecyclerAdapter()
         mainAdapter.setMainRecyclerInterface(presenter.getRecyclerHandler())
         (recyclerview_main as RecyclerView).apply {
             layoutManager = LinearLayoutManager(activity)
@@ -52,10 +52,6 @@ class MainFragment : Fragment(), MainContract.View {
         val intent = Intent(context, QuizViewActivity::class.java)
         intent.putExtra(KanaViewActivity.Model_ID, id)
         startActivity(intent)
-    }
-
-    override fun closePopouts(){
-        (recyclerview_main.adapter as MainRecyclerAdapter).closeAllPopouts()
     }
 
 }

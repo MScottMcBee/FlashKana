@@ -34,7 +34,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, private val flashCardSe
                 view.showKana(KanaObject(numCorrect.toString(), ""))
                 for (i in 0..3) {
                     kanaUsed[i] = ""
-                    view.fadeoutAnswer(i)
+                    view.fadeOutAnswer(i)
                 }
             } else {
                 resetQuestion()
@@ -45,7 +45,7 @@ class QuizViewPresenter(val view: QuizViewContract.View, private val flashCardSe
             for (i in 0..3) {
                 if (correctAnswer != i) {
                     kanaUsed[i] = ""
-                    view.fadeoutAnswer(i)
+                    view.fadeOutAnswer(i)
                 }
             }
         }

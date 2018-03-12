@@ -6,35 +6,37 @@ import com.mscottmcbee.flashkana.model.ModelProvider
 import kotlinx.android.synthetic.main.recycleitem_main.view.*
 
 
-class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view){
+class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
-    var mainRecyclerInterface: MainRecyclerInterface? = null
+    private var mainRecyclerInterface: MainRecyclerInterface? = null
+    private var mainRecyclerAdapter: MainRecyclerAdapter? = null
 
-    fun bind(index :Int, recyclerInterface: MainRecyclerInterface?){
+    fun bind(index: Int, recyclerInterface: MainRecyclerInterface?, RecyclerAdapter: MainRecyclerAdapter) {
         mainRecyclerInterface = recyclerInterface
-        closePopout()
-        view.recycleitem_main_title.text = ModelProvider.instance.getTitle(index)//TODO do these need to be de-coupled?
+        mainRecyclerAdapter = RecyclerAdapter
+        closePopOut()
+        view.recycleitem_main_title.text = ModelProvider.instance.getTitle(index)
         view.recycleitem_main_description.text = ModelProvider.instance.getDescription(index)
         view.recycleitem_main_popout_view.setOnClickListener { mainRecyclerInterface?.goToFlashCardView(index) }
         view.recycleitem_main_popout_quiz.setOnClickListener { mainRecyclerInterface?.goToFlashCardQuiz(index) }
         view.recycleitem_main_popout_multiple.setOnClickListener { mainRecyclerInterface?.goToFlashCardMultiple(index) }
-        view.recycleitem_main_popout_details.setOnClickListener { mainRecyclerInterface?.bbb(index) }
+        view.recycleitem_main_popout_details.setOnClickListener {}
         view.recycleitem_main_button.setOnClickListener {
-            with(view.recycleitem_main_popout){
-                when(visibility){
-                    View.VISIBLE -> closePopout()
-                    View.GONE -> openPopout()
+            with(view.recycleitem_main_popout) {
+                when (visibility) {
+                    View.VISIBLE -> closePopOut()
+                    View.GONE -> openPopOut()
                 }
             }
         }
     }
 
-    fun closePopout(){
+    fun closePopOut() {
         view.recycleitem_main_popout.visibility = View.GONE
     }
 
-    private fun openPopout(){
-        mainRecyclerInterface?.newPopoutOpened()
+    private fun openPopOut() {
+        mainRecyclerAdapter?.closePopOuts()
         view.recycleitem_main_popout.visibility = View.VISIBLE
     }
 }

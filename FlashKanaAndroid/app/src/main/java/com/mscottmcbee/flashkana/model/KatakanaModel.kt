@@ -1,12 +1,12 @@
 package com.mscottmcbee.flashkana.model
 
-class KatakanaModel() : IFlashCardModel{
+class KatakanaModel : IFlashCardModel {
 
     companion object {
 
         lateinit var instance: KatakanaModel
 
-        var カタカナ: Array<KanaObject> = arrayOf(
+        var katakana: Array<KanaObject> = arrayOf(
                 KanaObject("ア", "a"),
                 KanaObject("イ", "i"),
                 KanaObject("ウ", "u"),
@@ -56,8 +56,8 @@ class KatakanaModel() : IFlashCardModel{
         )
     }
 
-    override fun getRandomCard():KanaObject{
-        return  カタカナ[(Math.random()* カタカナ.size).toInt()]
+    override fun getRandomCard(): KanaObject {
+        return katakana[(Math.random() * katakana.size).toInt()]
     }
 
     override fun getSetName(): String {

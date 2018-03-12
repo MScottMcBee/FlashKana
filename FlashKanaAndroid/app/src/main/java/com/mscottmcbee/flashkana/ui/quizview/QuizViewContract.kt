@@ -8,7 +8,7 @@ interface QuizViewContract {
     interface View : BaseView<Presenter> {
         fun showKana(kanaObject: KanaObject)
         fun showAnswer(answer: String, index: Int)
-        fun fadeoutAnswer(index: Int)
+        fun fadeOutAnswer(index: Int)
     }
 
     interface Presenter {

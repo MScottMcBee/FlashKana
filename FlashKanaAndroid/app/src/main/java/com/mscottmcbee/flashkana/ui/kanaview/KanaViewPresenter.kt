@@ -2,7 +2,7 @@ package com.mscottmcbee.flashkana.ui.kanaview
 
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 
-class KanaViewPresenter(val view: KanaViewContract.View, val flashCardSet: IFlashCardModel)
+class KanaViewPresenter(val view: KanaViewContract.View, private val flashCardSet: IFlashCardModel)
     : KanaViewContract.Presenter {
 
     init {

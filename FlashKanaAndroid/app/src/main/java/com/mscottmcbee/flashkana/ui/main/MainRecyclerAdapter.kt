@@ -1,26 +1,25 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.ModelProvider
 
 
-class MainRecyclerAdapter() : RecyclerView.Adapter<MainViewHolder>() {
+class MainRecyclerAdapter : RecyclerView.Adapter<MainViewHolder>() {
 
     private var mainRecyclerInterface: MainRecyclerInterface? = null
     private var allViewHolders = mutableListOf<MainViewHolder>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycleitem_main, parent, false)
         allViewHolders.add(MainViewHolder(view))
         return allViewHolders.last()
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(position,mainRecyclerInterface)
+        holder.bind(position, mainRecyclerInterface, this)
     }
 
     override fun getItemCount(): Int {
@@ -31,10 +30,9 @@ class MainRecyclerAdapter() : RecyclerView.Adapter<MainViewHolder>() {
         this.mainRecyclerInterface = mainRecyclerInterface
     }
 
-    fun closeAllPopouts(){
-        Log.d("aaa", "close 'em")
-        for(holder in allViewHolders){
-            holder.closePopout()
+    fun closePopOuts() {
+        for (holder in allViewHolders) {
+            holder.closePopOut()
         }
     }
 

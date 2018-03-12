@@ -15,9 +15,6 @@ class MainActivity : AppCompatActivity() {
         val presenter = MainPresenter(fragment)
 
         ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.main_fragment_holder)
-
-
-
     }
 
 }

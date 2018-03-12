@@ -1,6 +1,5 @@
 package com.mscottmcbee.flashkana.ui.quizview
 
-import android.animation.Animator
 import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -63,22 +62,22 @@ class QuizViewFragment : Fragment(), QuizViewContract.View {
             2 -> fragment_quiz_view_answer3
             3 -> fragment_quiz_view_answer4
             else -> fragment_quiz_view_answer1
-        }.apply{
+        }.apply {
             text = answer
             alpha = 1.0f
             startAnimation(fadein)
         }
     }
 
-    override fun fadeoutAnswer(index: Int){
+    override fun fadeOutAnswer(index: Int) {
         Log.d("aaa", "fadeout $index")
-        when (index){
+        when (index) {
             0 -> fragment_quiz_view_answer1
             1 -> fragment_quiz_view_answer2
             2 -> fragment_quiz_view_answer3
             3 -> fragment_quiz_view_answer4
             else -> fragment_quiz_view_answer1
-        }.apply{
+        }.apply {
             Log.d("aaa", "animation $animation")
             val fadeoutAnimator = AnimatorInflater.loadAnimator(activity, R.animator.fade_out_animator)
             fadeoutAnimator.setTarget(this)
