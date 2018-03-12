@@ -3,7 +3,6 @@ package com.mscottmcbee.flashkana.ui.kanaquiz
 import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,7 +54,6 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
     }
 
     override fun showAnswer(answer: String, index: Int) {
-        Log.d("aaa", "showAnswer '$answer' at $index")
         when (index) {
             0 -> fragment_quiz_view_answer1
             1 -> fragment_quiz_view_answer2
@@ -70,7 +68,6 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
     }
 
     override fun fadeOutAnswer(index: Int) {
-        Log.d("aaa", "fadeout $index")
         when (index) {
             0 -> fragment_quiz_view_answer1
             1 -> fragment_quiz_view_answer2
@@ -78,7 +75,6 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
             3 -> fragment_quiz_view_answer4
             else -> fragment_quiz_view_answer1
         }.apply {
-            Log.d("aaa", "animation $animation")
             val fadeoutAnimator = AnimatorInflater.loadAnimator(activity, R.animator.fade_out_animator)
             fadeoutAnimator.setTarget(this)
             fadeoutAnimator.start()
