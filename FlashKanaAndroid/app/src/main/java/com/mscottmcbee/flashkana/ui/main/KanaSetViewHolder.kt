@@ -6,20 +6,20 @@ import com.mscottmcbee.flashkana.model.ModelProvider
 import kotlinx.android.synthetic.main.recycleitem_main.view.*
 
 
-class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
+class KanaSetViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
-    private var mainRecyclerInterface: MainRecyclerInterface? = null
-    private var mainRecyclerAdapter: MainRecyclerAdapter? = null
+    private var kanaSetRecyclerInterface: KanaSetRecyclerInterface? = null
+    private var closePopOuts: () -> Unit = {}
 
-    fun bind(index: Int, recyclerInterface: MainRecyclerInterface?, RecyclerAdapter: MainRecyclerAdapter) {
-        mainRecyclerInterface = recyclerInterface
-        mainRecyclerAdapter = RecyclerAdapter
+    fun bind(index: Int, recyclerInterface: KanaSetRecyclerInterface?, closePopOutsLambda: () -> Unit) {
+        kanaSetRecyclerInterface = recyclerInterface
+        closePopOuts = closePopOutsLambda
         closePopOut()
         view.recycleitem_main_title.text = ModelProvider.instance.getTitle(index)
         view.recycleitem_main_description.text = ModelProvider.instance.getDescription(index)
-        view.recycleitem_main_popout_view.setOnClickListener { mainRecyclerInterface?.goToFlashCardView(index) }
-        view.recycleitem_main_popout_quiz.setOnClickListener { mainRecyclerInterface?.goToFlashCardQuiz(index) }
-        view.recycleitem_main_popout_multiple.setOnClickListener { mainRecyclerInterface?.goToFlashCardMultiple(index) }
+        view.recycleitem_main_popout_view.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardView(index) }
+        view.recycleitem_main_popout_quiz.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardQuiz(index) }
+        view.recycleitem_main_popout_multiple.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardMultiple(index) }
         view.recycleitem_main_popout_details.setOnClickListener {}
         view.recycleitem_main_button.setOnClickListener {
             with(view.recycleitem_main_popout) {
@@ -36,7 +36,7 @@ class MainViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun openPopOut() {
-        mainRecyclerAdapter?.closePopOuts()
+        closePopOuts()
         view.recycleitem_main_popout.visibility = View.VISIBLE
     }
 }

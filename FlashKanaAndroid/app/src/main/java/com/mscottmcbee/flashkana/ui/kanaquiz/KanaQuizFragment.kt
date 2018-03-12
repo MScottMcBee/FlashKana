@@ -1,4 +1,4 @@
-package com.mscottmcbee.flashkana.ui.quizview
+package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import android.animation.AnimatorInflater
 import android.os.Bundle
@@ -13,14 +13,14 @@ import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.KanaObject
 import kotlinx.android.synthetic.main.fragment_quiz_view.*
 
-class QuizViewFragment : Fragment(), QuizViewContract.View {
+class KanaQuizFragment : Fragment(), KanaQuizContract.View {
 
-    override lateinit var presenter: QuizViewContract.Presenter
+    override lateinit var presenter: KanaQuizContract.Presenter
     private lateinit var fadein: Animation
 
     companion object {
-        fun newInstance(): QuizViewFragment {
-            return QuizViewFragment()
+        fun newInstance(): KanaQuizFragment {
+            return KanaQuizFragment()
         }
     }
 

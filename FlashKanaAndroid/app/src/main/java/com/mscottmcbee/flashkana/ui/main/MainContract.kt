@@ -11,6 +11,6 @@ interface MainContract {
 
     interface Presenter {
         fun setup()
-        fun getRecyclerHandler(): MainRecyclerInterface
+        fun getRecyclerHandler(): KanaSetRecyclerInterface
     }
 }

@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.ui.kanaview.KanaViewActivity
-import com.mscottmcbee.flashkana.ui.quizview.QuizViewActivity
+import com.mscottmcbee.flashkana.ui.kanaquiz.KanaQuizActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(), MainContract.View {
@@ -32,7 +32,7 @@ class MainFragment : Fragment(), MainContract.View {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainAdapter = MainRecyclerAdapter()
+        val mainAdapter = KanaSetRecyclerAdapter()
         mainAdapter.setMainRecyclerInterface(presenter.getRecyclerHandler())
         (recyclerview_main as RecyclerView).apply {
             layoutManager = LinearLayoutManager(activity)
@@ -49,7 +49,7 @@ class MainFragment : Fragment(), MainContract.View {
     }
 
     override fun onFlashQuizSetClicked(id: Int) {
-        val intent = Intent(context, QuizViewActivity::class.java)
+        val intent = Intent(context, KanaQuizActivity::class.java)
         intent.putExtra(KanaViewActivity.Model_ID, id)
         startActivity(intent)
     }

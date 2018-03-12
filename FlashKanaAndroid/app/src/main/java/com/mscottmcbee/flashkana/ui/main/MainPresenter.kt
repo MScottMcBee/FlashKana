@@ -3,7 +3,7 @@ package com.mscottmcbee.flashkana.ui.main
 import android.util.Log
 
 class MainPresenter(val view: MainContract.View)
-    : MainContract.Presenter, MainRecyclerInterface {
+    : MainContract.Presenter, KanaSetRecyclerInterface {
 
     init {
         view.presenter = this
@@ -25,7 +25,7 @@ class MainPresenter(val view: MainContract.View)
         Log.d("aaa", "goToFlashCardMultiple, $id")
     }
 
-    override fun getRecyclerHandler(): MainRecyclerInterface {
+    override fun getRecyclerHandler(): KanaSetRecyclerInterface {
         return this
     }
 

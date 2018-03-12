@@ -1,4 +1,4 @@
-package com.mscottmcbee.flashkana.ui.quizview
+package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -7,7 +7,7 @@ import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.ModelProvider
 import com.mscottmcbee.flashkana.ui.ActivityUtils
 
-class QuizViewActivity : AppCompatActivity() {
+class KanaQuizActivity : AppCompatActivity() {
 
     companion object {
         const val Model_ID: String = "model_id"
@@ -22,8 +22,8 @@ class QuizViewActivity : AppCompatActivity() {
 
         title = flashCardSet.getSetName()
 
-        val fragment: QuizViewFragment = QuizViewFragment.newInstance()
-        val presenter = QuizViewPresenter(fragment, flashCardSet)
+        val fragment: KanaQuizFragment = KanaQuizFragment.newInstance()
+        val presenter = KanaQuizPresenter(fragment, flashCardSet)
 
         ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.quiz_view_fragment_holder)
     }

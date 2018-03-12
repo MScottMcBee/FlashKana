@@ -1,11 +1,11 @@
-package com.mscottmcbee.flashkana.ui.quizview
+package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.KanaObject
 import java.util.*
 
-class QuizViewPresenter(val view: QuizViewContract.View, private val flashCardSet: IFlashCardModel)
-    : QuizViewContract.Presenter {
+class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSet: IFlashCardModel)
+    : KanaQuizContract.Presenter {
 
     companion object {
         const val TOTAL_QUESTIONS = 10
