@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillAfter="true"
+    android:fillEnabled="true">
+
+    <Button
+        android:id="@+id/recycleitem_main_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00000000"
+        app:layout_constraintBottom_toBottomOf="@+id/recycleitem_main_imageview"
+        app:layout_constraintEnd_toEndOf="@+id/recycleitem_main_imageview"
+        app:layout_constraintStart_toStartOf="@+id/recycleitem_main_imageview"
+        app:layout_constraintTop_toTopOf="@+id/recycleitem_main_imageview" />
+
+    <ImageView
+        android:id="@+id/recycleitem_main_imageview"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/holo_blue_dark" />
+
+    <TextView
+        android:id="@+id/recycleitem_main_title"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Title"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="@+id/recycleitem_main_button"
+        app:layout_constraintStart_toStartOf="@+id/recycleitem_main_button"
+        app:layout_constraintTop_toTopOf="@+id/recycleitem_main_button" />
+
+    <TextView
+        android:id="@+id/recycleitem_main_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Description"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/recycleitem_main_button"
+        app:layout_constraintEnd_toEndOf="@+id/recycleitem_main_button"
+        app:layout_constraintStart_toStartOf="@+id/recycleitem_main_button"
+        app:layout_constraintTop_toBottomOf="@+id/recycleitem_main_title" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/recycleitem_main_popout"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="100dp"
+        android:visibility="gone"
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/recycleitem_main_button">
+
+        <Button
+            android:id="@+id/recycleitem_main_popout_view"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="View"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/recycleitem_main_popout_multiple"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Multiple Choice"
+            app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_view"
+            app:layout_constraintTop_toTopOf="@+id/recycleitem_main_popout_view" />
+
+        <Button
+            android:id="@+id/recycleitem_main_popout_quiz"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Quiz"
+            app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_multiple"
+            app:layout_constraintTop_toTopOf="@+id/recycleitem_main_popout_view" />
+
+        <Button
+            android:id="@+id/recycleitem_main_popout_details"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="8dp"
+            android:text="More"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

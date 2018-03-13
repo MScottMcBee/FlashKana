@@ -1,6 +1,6 @@
 package com.mscottmcbee.flashkana.model
 
-class HiraganaModel() : IFlashCardModel{
+class HiraganaModel() : IFlashCardModel {
 
     companion object {
 
@@ -58,11 +58,15 @@ class HiraganaModel() : IFlashCardModel{
 
     }
 
-    override fun getRandomCard():KanaObject{
-        return hiragana[(Math.random()* hiragana.size).toInt()]
+    override fun getRandomCard(): KanaObject {
+        return hiragana[(Math.random() * hiragana.size).toInt()]
     }
 
     override fun getSetName(): String {
         return "Hiragana"
+    }
+
+    override fun getSetDescription(): String {
+        return "The first 50 hiragana gojuin"
     }
 }

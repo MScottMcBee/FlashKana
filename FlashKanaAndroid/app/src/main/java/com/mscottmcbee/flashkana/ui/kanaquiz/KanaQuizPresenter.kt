@@ -1,22 +1,22 @@
-package com.mscottmcbee.flashkana.ui.quizview
+package com.mscottmcbee.flashkana.ui.kanaquiz
 
-import android.util.Log
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.KanaObject
 import java.util.*
 
-class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlashCardModel)
-    : QuizViewContract.Presenter {
+class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSet: IFlashCardModel)
+    : KanaQuizContract.Presenter {
 
     companion object {
         const val TOTAL_QUESTIONS = 10
     }
 
-    var currentQuestion = 1
-    var numCorrect = 0
-    var numIncorrect = 0
-    var correctAnswer = -1
-    val kanaUsed = mutableListOf<String>("", "", "", "")
+    private var currentQuestion = 1
+    private var numCorrect = 0
+    private var numIncorrect = 0
+    private var correctAnswer = -1
+    private val kanaUsed = mutableListOf("", "", "", "")
+    private var lastKana = ""
 
     init {
         view.presenter = this
@@ -30,11 +30,11 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
         if (correctAnswer == index && kanaUsed[index] != "") { //if the answer is right and buttons haven't already been cleared
             numCorrect++
             currentQuestion++
-            if (currentQuestion >= TOTAL_QUESTIONS) {
+            if (currentQuestion > TOTAL_QUESTIONS) {
                 view.showKana(KanaObject(numCorrect.toString(), ""))
                 for (i in 0..3) {
                     kanaUsed[i] = ""
-                    view.showAnswer("", i)
+                    view.fadeOutAnswer(i)
                 }
             } else {
                 resetQuestion()
@@ -45,13 +45,13 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
             for (i in 0..3) {
                 if (correctAnswer != i) {
                     kanaUsed[i] = ""
-                    view.showAnswer("", i)
+                    view.fadeOutAnswer(i)
                 }
             }
         }
     }
 
-    fun resetQuestion() {
+    private fun resetQuestion() {
         //set each answer to random wrong ones that are all different
         //note: this requires flash card models to have at least 4 kana objects
         for (i in 0..3) {
@@ -63,12 +63,14 @@ class QuizViewPresenter(val view: QuizViewContract.View, val flashCardSet: IFlas
         }
 
         //choose a random answer then pair it with a random glyph that isn't being used
+        //note: this requires flash card models to have at least 5 kana objects
         correctAnswer = Random().nextInt(3)
         kanaUsed[correctAnswer] = ""
         var kanaSet: KanaObject
         do {
             kanaSet = flashCardSet.getRandomCard()
-        } while (kanaUsed.contains(kanaSet.answer))
+        } while (kanaUsed.contains(kanaSet.answer) || kanaSet.answer == lastKana)
+        lastKana = kanaSet.answer
         view.showKana(kanaSet)
         view.showAnswer(kanaSet.answer, correctAnswer)
         kanaUsed[correctAnswer] = kanaSet.answer

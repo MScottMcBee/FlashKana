@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.quizview.QuizViewActivity"
+            android:name=".ui.kanaquiz.KanaQuizActivity"
             android:parentActivityName=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
