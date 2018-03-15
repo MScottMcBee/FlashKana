@@ -67,6 +67,11 @@ class HiraganaModel() : IFlashCardModel {
     }
 
     override fun getSetDescription(): String {
+        /*return (listOf("A", "B", "C", "D").toString().replace(" |]|\\[".toRegex(), "")).split(",").toList().toString()
+        return (listOf("A", "B", "C", "D").toString().replace(" |]|\\[".toRegex(), "")).split(",".toRegex()).toList().toString()
+        return (listOf("A", "B", "C", "D").toString().replace(" ", "").replace("[", "").replace("]", "")).split(",".toRegex()).toString()
+        return hiragana.joinToString()
+        return mapOf("A" to "a", "B" to "b", "C" to "c", "D" to "d", "E" to "e", "F" to "f", "G" to "g").toString()*/
         return "The first 50 hiragana gojuin"
     }
 }
