@@ -1,18 +1,13 @@
 package com.mscottmcbee.flashkana.room
 
 import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
-import android.arch.persistence.room.OnConflictStrategy.REPLACE
 
 @Dao
-interface FlashBlockDAO {
+interface FlashBlockDAO : BaseDAO<FlashBlockData> {
 
     @Query("SELECT * from FlashBlockData")
     fun getAll(): List<FlashBlockData>
-
-    @Insert(onConflict = REPLACE)
-    fun insert(flashBlockData: FlashBlockData)
 
     @Query("DELETE FROM FlashBlockData")
     fun deleteAll()

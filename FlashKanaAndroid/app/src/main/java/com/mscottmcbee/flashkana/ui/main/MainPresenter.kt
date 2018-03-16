@@ -1,6 +1,7 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import android.util.Log
+import com.mscottmcbee.flashkana.room.DatabaseWrapper
 
 class MainPresenter(val view: MainContract.View)
     : MainContract.Presenter, KanaSetRecyclerInterface {
@@ -23,6 +24,7 @@ class MainPresenter(val view: MainContract.View)
 
     override fun goToFlashCardMultiple(id: Int) {
         Log.d("aaa", "goToFlashCardMultiple, $id")
+        //DatabaseWrapper.instance.emptyDatabase()
     }
 
     override fun getRecyclerHandler(): KanaSetRecyclerInterface {

@@ -10,6 +10,6 @@ data class FlashCardData(@PrimaryKey(autoGenerate = true) var id: Int?,
                          @ColumnInfo(name = "flashCardAnswer") var flashCardAnswer: String,
                          @ColumnInfo(name = "flashCardQuestion") var flashCardQuestion: String,
                          @ColumnInfo(name = "flashCardType") var flashCardType: String
-){
-    constructor():this(null, "", "", "")
+) {
+    constructor() : this(null, "", "", "")
 }
