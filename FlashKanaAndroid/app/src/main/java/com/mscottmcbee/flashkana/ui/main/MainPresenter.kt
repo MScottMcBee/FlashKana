@@ -24,7 +24,6 @@ class MainPresenter(val view: MainContract.View)
 
     override fun goToFlashCardMultiple(id: Int) {
         Log.d("aaa", "goToFlashCardMultiple, $id")
-        //DatabaseWrapper.instance.emptyDatabase()
     }
 
     override fun getRecyclerHandler(): KanaSetRecyclerInterface {

@@ -3,7 +3,7 @@ package com.mscottmcbee.flashkana.model
 import android.content.Context
 import com.mscottmcbee.flashkana.room.*
 
-class ModelProvider(var context: Context) {
+class ModelProvider {
 
     private val databaseWrapper = DatabaseWrapper.instance
     private val flashBlocks = databaseWrapper.getFlashBlocks()

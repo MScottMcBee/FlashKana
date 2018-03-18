@@ -15,7 +15,7 @@ class FKApplication : Application() {
         context = applicationContext
         DatabaseWrapper.instance = DatabaseWrapper()
         GenericModel.instance = GenericModel()
-        ModelProvider.instance = ModelProvider(applicationContext)
+        ModelProvider.instance = ModelProvider()
 
         super.onCreate()
     }
