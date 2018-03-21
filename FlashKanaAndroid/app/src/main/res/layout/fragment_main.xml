@@ -9,5 +9,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_main"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="245dp" />
+
 </android.support.constraint.ConstraintLayout>

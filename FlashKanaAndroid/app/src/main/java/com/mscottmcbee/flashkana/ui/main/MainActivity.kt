@@ -12,9 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val fragment: MainFragment = MainFragment.newInstance()
-        val presenter = MainPresenter(fragment)
+        MainPresenter(fragment)
 
         ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.main_fragment_holder)
     }
-
 }

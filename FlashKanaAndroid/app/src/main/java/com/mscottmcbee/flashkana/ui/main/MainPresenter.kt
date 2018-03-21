@@ -28,5 +28,4 @@ class MainPresenter(val view: MainContract.View)
     override fun getRecyclerHandler(): KanaSetRecyclerInterface {
         return this
     }
-
 }

@@ -1,20 +1,15 @@
 package com.mscottmcbee.flashkana.application
 
 import android.app.Application
-import com.mscottmcbee.flashkana.model.HiraganaModel
-import com.mscottmcbee.flashkana.model.KatakanaModel
-import com.mscottmcbee.flashkana.model.ModelProvider
-import com.mscottmcbee.flashkana.model.TestingModel
+import com.mscottmcbee.flashkana.model.*
+import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
 
 class FKApplication : Application() {
 
     override fun onCreate() {
-
-        HiraganaModel.instance = HiraganaModel()
-        KatakanaModel.instance = KatakanaModel()
-        TestingModel.instance = TestingModel()
+        DatabaseWrapper.instance = DatabaseWrapper(applicationContext)
+        DatabaseWrapper.instance.defaultDatabase()
         ModelProvider.instance = ModelProvider()
-
         super.onCreate()
     }
 }
