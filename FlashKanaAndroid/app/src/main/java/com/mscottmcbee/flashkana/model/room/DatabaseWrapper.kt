@@ -1,25 +1,14 @@
-package com.mscottmcbee.flashkana.room
+package com.mscottmcbee.flashkana.model.room
 
-import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import com.mscottmcbee.flashkana.application.FKApplication
+import android.content.Context
 import com.mscottmcbee.flashkana.model.KanaObject
-import java.util.concurrent.Executors
 
 
-class DatabaseWrapper {
+class DatabaseWrapper(context: Context) {
 
-    private val masterdb = Room.databaseBuilder(FKApplication.context, MasterDatabase::class.java, "Master.db")
+    private val masterdb = Room.databaseBuilder(context, MasterDatabase::class.java, "Master.db")
             .allowMainThreadQueries()
-            .addCallback(object : RoomDatabase.Callback() {
-                override fun onOpen(db: SupportSQLiteDatabase) {
-                    super.onOpen(db)
-                    Executors.newSingleThreadExecutor().execute({
-                        defaultDatabase()
-                    })
-                }
-            })
             .build()
 
     companion object {
@@ -80,10 +69,10 @@ class DatabaseWrapper {
         return kanaObjects
     }
 
-    fun insertFlashCardsWithFlashBlock(flashBlockTitle: String, kanaObjects: List<KanaObject>) {
+    fun insertFlashCardsWithFlashBlock(flashBlockTitle: String, kanaObjects: List<KanaObject>, flashCardType: String) {
         val flashBlockID = getFlashBlockIDByTitle(flashBlockTitle)
         for (i in 0 until kanaObjects.size) {
-            insert(kanaObjects[i].answer, kanaObjects[i].glyph, "testing")
+            insert(kanaObjects[i].answer, kanaObjects[i].glyph, flashCardType)
             insert(flashBlockID, getFlashCardIDByQuestion(kanaObjects[i].glyph))
         }
     }
@@ -110,7 +99,7 @@ class DatabaseWrapper {
                 KanaObject("i", "i"),
                 KanaObject("j", "j")
         )
-        insertFlashCardsWithFlashBlock("Testing", testing.asList())
+        insertFlashCardsWithFlashBlock("Testing", testing.asList(), "testing")
 
         val hiragana: Array<KanaObject> = arrayOf(
                 KanaObject("あ", "a"),
@@ -160,7 +149,7 @@ class DatabaseWrapper {
                 KanaObject("を", "wo"),
                 KanaObject("ん", "n")
         )
-        insertFlashCardsWithFlashBlock("Hiragana", hiragana.asList())
+        insertFlashCardsWithFlashBlock("Hiragana", hiragana.asList(), "hiragana")
 
         val katakana: Array<KanaObject> = arrayOf(
                 KanaObject("ア", "a"),
@@ -210,6 +199,6 @@ class DatabaseWrapper {
                 KanaObject("ヲ", "wo"),
                 KanaObject("ン", "n")
         )
-        insertFlashCardsWithFlashBlock("Katakana", katakana.asList())
+        insertFlashCardsWithFlashBlock("Katakana", katakana.asList(), "katakana")
     }
 }

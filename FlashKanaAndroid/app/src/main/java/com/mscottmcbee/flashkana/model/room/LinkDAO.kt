@@ -1,4 +1,4 @@
-package com.mscottmcbee.flashkana.room
+package com.mscottmcbee.flashkana.model.room
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query

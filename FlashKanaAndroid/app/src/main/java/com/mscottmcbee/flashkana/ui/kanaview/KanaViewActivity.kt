@@ -23,7 +23,7 @@ class KanaViewActivity : AppCompatActivity() {
         title = flashCardSet.getSetName()
 
         val fragment: KanaViewFragment = KanaViewFragment.newInstance()
-        val presenter = KanaViewPresenter(fragment, flashCardSet)
+        KanaViewPresenter(fragment, flashCardSet)
 
         ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.kana_view_fragment_holder)
     }
