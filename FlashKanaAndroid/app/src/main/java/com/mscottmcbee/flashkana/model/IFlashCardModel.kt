@@ -6,4 +6,13 @@ interface IFlashCardModel {
     fun getSetDescription(): String
     fun addCards(cards: List<KanaObject>)
     fun removeCards()
+    fun populateStats()
+    fun getCardScore(index: Int): Int
+    fun getCard(index: Int): KanaObject
+    fun getSize(): Int
+    fun getStatsScore(): Int
+    fun getStatsViewed(): Int
+    fun getStatsQuizzed(): Int
+    fun getUID(): Int
+    fun updateFlashBlockCardScore(glyph: String, score: Int)
 }

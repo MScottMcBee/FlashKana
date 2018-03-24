@@ -8,7 +8,8 @@ import android.arch.persistence.room.ColumnInfo
 
 data class LinkData(@PrimaryKey(autoGenerate = true) var id: Int?,
                     @ColumnInfo(name = "linkDataFlashBlockID") var linkDataFlashBlockID: Int?,
-                    @ColumnInfo(name = "linkDataFlashCardID") var linkDataFlashCardID: Int?
+                    @ColumnInfo(name = "linkDataFlashCardID") var linkDataFlashCardID: Int?,
+                    @ColumnInfo(name = "linkDataFlashCardScore") var linkDataFlashCardScore: Int?
 ) {
-    constructor() : this(null, null, null)
+    constructor() : this(null, null, null, null)
 }

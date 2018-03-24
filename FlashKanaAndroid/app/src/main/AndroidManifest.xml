@@ -19,7 +19,6 @@
         </activity>
         <activity
             android:name=".ui.kanaview.KanaViewActivity"
-            android:label="@string/"
             android:parentActivityName=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +26,13 @@
         </activity>
         <activity
             android:name=".ui.kanaquiz.KanaQuizActivity"
+            android:parentActivityName=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.kanaquiz.StatsActivity"
             android:parentActivityName=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,6 +2,7 @@ package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.KanaObject
+import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
 import java.util.*
 
 class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSet: IFlashCardModel)
@@ -17,6 +18,8 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
     private var correctAnswer = -1
     private val kanaUsed = mutableListOf("", "", "", "")
     private var lastKana = ""
+    private var cardsQuizzed = 0
+    private var answerWasWrong = false
 
     init {
         view.presenter = this
@@ -30,6 +33,11 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         if (correctAnswer == index && kanaUsed[index] != "") { //if the answer is right and buttons haven't already been cleared
             numCorrect++
             currentQuestion++
+            if(!answerWasWrong) {
+                cardsQuizzed++
+                flashCardSet.updateFlashBlockCardScore(kanaUsed[correctAnswer], 100)
+            }
+            answerWasWrong = false
             if (currentQuestion > TOTAL_QUESTIONS) {
                 view.showKana(KanaObject(numCorrect.toString(), ""))
                 for (i in 0..3) {
@@ -42,6 +50,9 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         } else if (kanaUsed[index] != "") { //if the answer is wrong and buttons haven't already been cleared
             numIncorrect++
             numCorrect--
+            cardsQuizzed++
+            flashCardSet.updateFlashBlockCardScore(kanaUsed[correctAnswer], 0)
+            answerWasWrong = true
             for (i in 0..3) {
                 if (correctAnswer != i) {
                     kanaUsed[i] = ""
@@ -74,6 +85,11 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         view.showKana(kanaSet)
         view.showAnswer(kanaSet.answer, correctAnswer)
         kanaUsed[correctAnswer] = kanaSet.answer
+    }
+
+    override fun updateCardsQuizzed(){
+        DatabaseWrapper.instance.incrementFlashBlockCardsQuizzed(flashCardSet.getUID(), cardsQuizzed)
+        cardsQuizzed = 0
     }
 
 }

@@ -12,7 +12,8 @@ class ModelProvider {
         for (i in 0 until flashBlocks.size) {
             models.add(GenericModel(
                     flashBlocks[i].flashBlockName,
-                    flashBlocks[i].flashBlockDescription))
+                    flashBlocks[i].flashBlockDescription,
+                    flashBlocks[i].id))
         }
     }
 
@@ -21,8 +22,10 @@ class ModelProvider {
     }
 
     fun getModelByID(id: Int): IFlashCardModel {
-        models[id].addCards(
-                databaseWrapper.getFlashCardsOfFlashBlockAsKanaObjects(flashBlocks[id].id))
+        if(models[id].getSize() == 0) {
+            models[id].addCards(
+                    databaseWrapper.getFlashCardsOfFlashBlockAsKanaObjects(flashBlocks[id].id))
+        }
         return models[id]
     }
 

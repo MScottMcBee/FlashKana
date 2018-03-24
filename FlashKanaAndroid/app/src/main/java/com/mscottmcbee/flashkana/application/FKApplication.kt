@@ -8,6 +8,7 @@ class FKApplication : Application() {
 
     override fun onCreate() {
         DatabaseWrapper.instance = DatabaseWrapper(applicationContext)
+        DatabaseWrapper.instance.emptyDatabase()
         DatabaseWrapper.instance.defaultDatabase()
         ModelProvider.instance = ModelProvider()
         super.onCreate()
