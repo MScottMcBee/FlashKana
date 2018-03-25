@@ -13,6 +13,8 @@ interface IFlashCardModel {
     fun getStatsScore(): Int
     fun getStatsViewed(): Int
     fun getStatsQuizzed(): Int
-    fun getUID(): Int
+    fun getFlashBlockUID(): Int
     fun updateFlashBlockCardScore(glyph: String, score: Int)
+    fun updateCardsViewed(cardsViewed: Int)
+    fun updateCardsQuizzed(cardsQuizzed: Int)
 }

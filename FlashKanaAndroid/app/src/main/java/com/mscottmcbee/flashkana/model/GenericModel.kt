@@ -2,22 +2,14 @@ package com.mscottmcbee.flashkana.model
 
 import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
 
-class GenericModel : IFlashCardModel {
+class GenericModel(val title: String = "title", val description: String = "description", private val flashBlockUID: Int = 0) : IFlashCardModel {
 
-    var title: String = "title"
-    var description: String = "description"
-    var uid = 0
     var flashCards = mutableListOf<KanaObject>()
-    var cardScores = mutableListOf<Int>()
-    var overallScore = 0
-    var cardsViewed = 0
-    var cardsQuizzed = 0
-
-    constructor(modelTitle: String, modelDescription: String, modelUid: Int) {
-        title = modelTitle
-        description = modelDescription
-        uid = modelUid
-    }
+    private var cardScores = mutableListOf<Int>()
+    private var overallScore = 0
+    private var cardsViewed = 0
+    private var cardsQuizzed = 0
+    private var databaseWrapper = DatabaseWrapper.instance
 
     override fun getRandomCard(): KanaObject {
         return flashCards[(Math.random() * flashCards.size).toInt()]
@@ -41,10 +33,10 @@ class GenericModel : IFlashCardModel {
 
     override fun populateStats() {
         cardScores.removeAll({ true })
-        cardScores.addAll(DatabaseWrapper.instance.getFlashBlockScores(uid))
+        cardScores.addAll(databaseWrapper.getFlashBlockScores(flashBlockUID))
         overallScore = cardScores.average().toInt()
-        cardsViewed = DatabaseWrapper.instance.getFlashBlockStatViewed(uid)
-        cardsQuizzed = DatabaseWrapper.instance.getFlashBlockStatQuizzed(uid)
+        cardsViewed = databaseWrapper.getFlashBlockStatViewed(flashBlockUID)
+        cardsQuizzed = databaseWrapper.getFlashBlockStatQuizzed(flashBlockUID)
     }
 
     override fun getCardScore(index: Int): Int {
@@ -71,11 +63,19 @@ class GenericModel : IFlashCardModel {
         return cardsQuizzed
     }
 
-    override fun getUID(): Int {
-        return uid
+    override fun getFlashBlockUID(): Int {
+        return flashBlockUID
     }
 
     override fun updateFlashBlockCardScore(glyph: String, score: Int) {
-        DatabaseWrapper.instance.updateFlashBlockCardScore(uid, glyph, score)
+        databaseWrapper.updateFlashBlockCardScore(flashBlockUID, glyph, score)
+    }
+
+    override fun updateCardsViewed(cardsViewed: Int) {
+        databaseWrapper.incrementFlashBlockCardsViewed(flashBlockUID, cardsViewed)
+    }
+
+    override fun updateCardsQuizzed(cardsQuizzed: Int) {
+        databaseWrapper.incrementFlashBlockCardsQuizzed(flashBlockUID, cardsQuizzed)
     }
 }

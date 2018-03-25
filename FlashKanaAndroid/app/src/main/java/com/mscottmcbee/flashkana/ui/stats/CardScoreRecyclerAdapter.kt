@@ -9,22 +9,16 @@ import com.mscottmcbee.flashkana.model.IFlashCardModel
 
 class CardScoreRecyclerAdapter(private val flashCardSet: IFlashCardModel) : RecyclerView.Adapter<CardScoreViewHolder>() {
 
-    private var cardScoreRecyclerInterface: CardScoreRecyclerInterface? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardScoreViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycleitem_stats, parent, false)
         return CardScoreViewHolder(view, flashCardSet)
     }
 
     override fun onBindViewHolder(holder: CardScoreViewHolder, position: Int) {
-        holder.bind(position, cardScoreRecyclerInterface)
+        holder.bind(position)
     }
 
     override fun getItemCount(): Int {
         return flashCardSet.getSize()
-    }
-
-    fun setMainRecyclerInterface(cardScoreRecyclerInterface: CardScoreRecyclerInterface?) {
-        this.cardScoreRecyclerInterface = cardScoreRecyclerInterface
     }
 }

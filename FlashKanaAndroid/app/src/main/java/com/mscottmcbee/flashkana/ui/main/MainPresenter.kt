@@ -1,7 +1,5 @@
 package com.mscottmcbee.flashkana.ui.main
 
-import android.util.Log
-
 class MainPresenter(val view: MainContract.View)
     : MainContract.Presenter, KanaSetRecyclerInterface {
 

@@ -8,7 +8,7 @@ class ModelProvider {
     private val flashBlocks = databaseWrapper.getFlashBlocks()
     private val models = mutableListOf<GenericModel>()
 
-    constructor() {
+    init {
         for (i in 0 until flashBlocks.size) {
             models.add(GenericModel(
                     flashBlocks[i].flashBlockName,
@@ -22,7 +22,7 @@ class ModelProvider {
     }
 
     fun getModelByID(id: Int): IFlashCardModel {
-        if(models[id].getSize() == 0) {
+        if (models[id].getSize() == 0) {
             models[id].addCards(
                     databaseWrapper.getFlashCardsOfFlashBlockAsKanaObjects(flashBlocks[id].id))
         }

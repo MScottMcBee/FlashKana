@@ -1,12 +1,11 @@
 package com.mscottmcbee.flashkana.ui.kanaview
 
 import com.mscottmcbee.flashkana.model.IFlashCardModel
-import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
 
 class KanaViewPresenter(val view: KanaViewContract.View, private val flashCardSet: IFlashCardModel)
     : KanaViewContract.Presenter {
 
-    var cardsViewed = 0
+    private var cardsViewed = 0
 
     init {
         view.presenter = this
@@ -21,8 +20,8 @@ class KanaViewPresenter(val view: KanaViewContract.View, private val flashCardSe
         cardsViewed++
     }
 
-    override fun updateCardsViewed(){
-        DatabaseWrapper.instance.incrementFlashBlockCardsViewed(flashCardSet.getUID(), cardsViewed)
+    override fun updateCardsViewed() {
+        flashCardSet.updateCardsViewed(cardsViewed)
         cardsViewed = 0
     }
 

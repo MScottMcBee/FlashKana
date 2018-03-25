@@ -2,7 +2,6 @@ package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.KanaObject
-import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
 import java.util.*
 
 class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSet: IFlashCardModel)
@@ -33,7 +32,7 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         if (correctAnswer == index && kanaUsed[index] != "") { //if the answer is right and buttons haven't already been cleared
             numCorrect++
             currentQuestion++
-            if(!answerWasWrong) {
+            if (!answerWasWrong) {
                 cardsQuizzed++
                 flashCardSet.updateFlashBlockCardScore(kanaUsed[correctAnswer], 100)
             }
@@ -87,8 +86,8 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         kanaUsed[correctAnswer] = kanaSet.answer
     }
 
-    override fun updateCardsQuizzed(){
-        DatabaseWrapper.instance.incrementFlashBlockCardsQuizzed(flashCardSet.getUID(), cardsQuizzed)
+    override fun updateCardsQuizzed() {
+        flashCardSet.updateCardsQuizzed(cardsQuizzed)
         cardsQuizzed = 0
     }
 

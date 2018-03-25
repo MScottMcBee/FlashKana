@@ -1,9 +1,7 @@
 package com.mscottmcbee.flashkana.ui.stats
 
-import android.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +9,12 @@ import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.ModelProvider
-import com.mscottmcbee.flashkana.ui.main.KanaSetRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_stats.*
 
 
+class StatsFragment : android.support.v4.app.Fragment() {
 
-class StatsFragment :  android.support.v4.app.Fragment(){
-
-    lateinit var flashCardSet: IFlashCardModel
+    private lateinit var flashCardSet: IFlashCardModel
 
     companion object {
         fun newInstance(): StatsFragment {
@@ -37,7 +33,6 @@ class StatsFragment :  android.support.v4.app.Fragment(){
         flashCardSet.populateStats()
 
         val mainAdapter = CardScoreRecyclerAdapter(flashCardSet)
-        mainAdapter.setMainRecyclerInterface(null)
         (recyclerview_stats as RecyclerView).apply {
             layoutManager = GridLayoutManager(activity, 3)
             adapter = mainAdapter
