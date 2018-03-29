@@ -23,6 +23,10 @@ class GenericModel : IFlashCardModel {
         return description
     }
 
+    override fun getSetSubtitle(): String {
+        return "hji"
+    }
+
     override fun addCards(cards: List<KanaObject>) {
         flashCards.addAll(cards)
     }

@@ -37,4 +37,8 @@ class ModelProvider {
     fun getDescription(id: Int): String {
         return models[id].getSetDescription()
     }
+
+    fun getSubTitle(id: Int): String {
+        return models[id].getSetSubtitle()
+    }
 }

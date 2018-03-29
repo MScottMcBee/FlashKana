@@ -1,6 +1,7 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import android.support.v7.widget.RecyclerView
+import android.transition.TransitionManager
 import android.view.View
 import com.mscottmcbee.flashkana.model.ModelProvider
 import kotlinx.android.synthetic.main.recycleitem_main.view.*
@@ -21,7 +22,8 @@ class KanaSetViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         view.recycleitem_main_popout_quiz.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardQuiz(index) }
         view.recycleitem_main_popout_multiple.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardMultiple(index) }
         view.recycleitem_main_popout_details.setOnClickListener {}
-        view.recycleitem_main_button.setOnClickListener {
+        view.recycleitem_main_title2.text = ModelProvider.instance.getSubTitle(index)
+        view.setOnClickListener {
             with(view.recycleitem_main_popout) {
                 when (visibility) {
                     View.VISIBLE -> closePopOut()
@@ -33,10 +35,12 @@ class KanaSetViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
     fun closePopOut() {
         view.recycleitem_main_popout.visibility = View.GONE
+        TransitionManager.beginDelayedTransition(view.card)
     }
 
     private fun openPopOut() {
         closePopOuts()
         view.recycleitem_main_popout.visibility = View.VISIBLE
+        TransitionManager.beginDelayedTransition(view.card)
     }
 }

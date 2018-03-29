@@ -10,7 +10,9 @@
         android:id="@+id/recyclerview_main"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="#bbbbbb"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="245dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
