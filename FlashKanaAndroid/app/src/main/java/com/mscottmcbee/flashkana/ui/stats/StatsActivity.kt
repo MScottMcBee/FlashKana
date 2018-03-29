@@ -6,8 +6,9 @@ import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.ModelProvider
 import com.mscottmcbee.flashkana.ui.ActivityUtils
+import com.mscottmcbee.flashkana.ui.stats.StatsFragment
 
-class KanaQuizActivity : AppCompatActivity() {
+class StatsActivity : AppCompatActivity() {
 
     companion object {
         const val Model_ID: String = "model_id"
@@ -15,17 +16,20 @@ class KanaQuizActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz_view)
+        setContentView(R.layout.activity_stats)
         val id = intent.getIntExtra(Model_ID, 0)
 
         val flashCardSet: IFlashCardModel = ModelProvider.instance.getModelByID(id)
 
-        title = flashCardSet.getSetName()
+        title = "Statistics for ${flashCardSet.getSetName()}"
 
-        val fragment: KanaQuizFragment = KanaQuizFragment.newInstance()
-        KanaQuizPresenter(fragment, flashCardSet)
+        val fragment: StatsFragment = StatsFragment.newInstance()
 
-        ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.quiz_view_fragment_holder)
+        val bundle = Bundle()
+        bundle.putInt("id", id)
+        fragment.arguments = bundle
+
+        ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.stats_fragment_holder)
     }
 
 }

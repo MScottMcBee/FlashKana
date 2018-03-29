@@ -7,6 +7,7 @@ interface MainContract {
     interface View : BaseView<Presenter> {
         fun onFlashCardSetClicked(id: Int)
         fun onFlashQuizSetClicked(id: Int)
+        fun onFlashSetMoreClicked(id: Int)
     }
 
     interface Presenter {

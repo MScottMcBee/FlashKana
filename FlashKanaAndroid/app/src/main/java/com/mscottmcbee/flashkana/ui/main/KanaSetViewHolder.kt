@@ -21,9 +21,11 @@ class KanaSetViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         view.recycleitem_main_popout_view.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardView(index) }
         view.recycleitem_main_popout_quiz.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardQuiz(index) }
         view.recycleitem_main_popout_multiple.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardMultiple(index) }
-        view.recycleitem_main_popout_details.setOnClickListener {}
+
         view.recycleitem_main_title2.text = ModelProvider.instance.getSubTitle(index)
-        view.setOnClickListener {
+      //  view.setOnClickListener {
+      //  view.recycleitem_main_popout_details.setOnClickListener { kanaSetRecyclerInterface?.goToFlashCardStats(index) }
+      //  view.recycleitem_main_button.setOnClickListener {
             with(view.recycleitem_main_popout) {
                 when (visibility) {
                     View.VISIBLE -> closePopOut()

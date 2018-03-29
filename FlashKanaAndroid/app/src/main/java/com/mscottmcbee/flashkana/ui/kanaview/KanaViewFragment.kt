@@ -38,4 +38,9 @@ class KanaViewFragment : Fragment(), KanaViewContract.View {
         fragment_kana_view_answer.text = kanaObject.answer
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.updateCardsViewed()
+    }
+
 }

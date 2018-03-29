@@ -1,7 +1,5 @@
 package com.mscottmcbee.flashkana.ui.main
 
-import android.util.Log
-
 class MainPresenter(val view: MainContract.View)
     : MainContract.Presenter, KanaSetRecyclerInterface {
 
@@ -21,8 +19,8 @@ class MainPresenter(val view: MainContract.View)
         view.onFlashQuizSetClicked(id)
     }
 
-    override fun goToFlashCardMultiple(id: Int) {
-        Log.d("aaa", "goToFlashCardMultiple, $id")
+    override fun goToFlashCardStats(id: Int) {
+        view.onFlashSetMoreClicked(id)
     }
 
     override fun getRecyclerHandler(): KanaSetRecyclerInterface {

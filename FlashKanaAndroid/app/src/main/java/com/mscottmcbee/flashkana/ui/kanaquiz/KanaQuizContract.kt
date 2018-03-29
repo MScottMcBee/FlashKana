@@ -14,5 +14,6 @@ interface KanaQuizContract {
     interface Presenter {
         fun setup()
         fun onAnswerClicked(index: Int)
+        fun updateCardsQuizzed()
     }
 }

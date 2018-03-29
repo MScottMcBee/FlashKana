@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.ModelProvider
-import java.lang.Thread.sleep
 
 
 class KanaSetRecyclerAdapter : RecyclerView.Adapter<KanaSetViewHolder>() {

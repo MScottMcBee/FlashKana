@@ -80,4 +80,9 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
             fadeoutAnimator.start()
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.updateCardsQuizzed()
+    }
 }
