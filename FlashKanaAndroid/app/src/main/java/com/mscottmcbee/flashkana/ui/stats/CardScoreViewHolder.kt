@@ -22,9 +22,9 @@ class CardScoreViewHolder(var view: View, private var flashCardSet: IFlashCardMo
     }
 
     private fun getScoreColor(score: Int): Int {
-        return when {
-            score > 50 -> ColorUtils.blendARGB(colorMed, colorHigh, ((score - 50) / 50f))
-            score < 50 -> ColorUtils.blendARGB(colorMed, colorLow, ((50 - score) / 50f))
+        return when (score){
+            in 0..49 -> ColorUtils.blendARGB(colorMed, colorHigh, ((score - 50) / 50f))
+            in 51..100 -> ColorUtils.blendARGB(colorMed, colorLow, ((50 - score) / 50f))
             else -> colorMed
         }
     }

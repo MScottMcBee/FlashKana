@@ -34,15 +34,15 @@ class DatabaseWrapper(context: Context) {
     }
 
     fun insert(flashBlockName: String, flashBlockDescription: String) {
-        masterdb.flashBlockDAO().insert(FlashBlockData(0, flashBlockName, flashBlockDescription, 0, 0))
+        masterdb.flashBlockDAO().insert(FlashBlockData(flashBlockName, flashBlockDescription))
     }
 
     fun insert(flashCardAnswer: String, flashCardQuestion: String, flashCardType: String) {
-        masterdb.flashCardDAO().insert(FlashCardData(null, flashCardAnswer, flashCardQuestion, flashCardType))
+        masterdb.flashCardDAO().insert(FlashCardData(flashCardAnswer, flashCardQuestion, flashCardType))
     }
 
     fun insert(flashBlockID: Int?, flashCardID: Int?) {
-        masterdb.linkDAO().insert(LinkData(null, flashBlockID, flashCardID, 0))
+        masterdb.linkDAO().insert(LinkData(flashBlockID, flashCardID))
     }
 
     fun emptyDatabase() {
