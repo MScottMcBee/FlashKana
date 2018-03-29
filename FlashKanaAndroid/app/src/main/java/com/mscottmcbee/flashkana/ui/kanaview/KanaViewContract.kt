@@ -13,5 +13,6 @@ interface KanaViewContract {
     interface Presenter {
         fun setup()
         fun onMainClicked()
+        fun updateCardsViewed()
     }
 }

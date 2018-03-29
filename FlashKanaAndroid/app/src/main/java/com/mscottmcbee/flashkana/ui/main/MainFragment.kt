@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.ui.kanaview.KanaViewActivity
 import com.mscottmcbee.flashkana.ui.kanaquiz.KanaQuizActivity
+import com.mscottmcbee.flashkana.ui.kanaquiz.StatsActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(), MainContract.View {
@@ -50,6 +51,12 @@ class MainFragment : Fragment(), MainContract.View {
 
     override fun onFlashQuizSetClicked(id: Int) {
         val intent = Intent(context, KanaQuizActivity::class.java)
+        intent.putExtra(KanaViewActivity.Model_ID, id)
+        startActivity(intent)
+    }
+
+    override fun onFlashSetMoreClicked(id: Int) {
+        val intent = Intent(context, StatsActivity::class.java)
         intent.putExtra(KanaViewActivity.Model_ID, id)
         startActivity(intent)
     }

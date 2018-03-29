@@ -18,8 +18,8 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun testGenericModel(){
-        var model = GenericModel("a title", "a description")
+    fun testGenericModel() {
+        var model = GenericModel("a title", "a description", 0)
         model.addCards(listOf(KanaObject("Q", "A")))
         assertEquals(model.title, "a title")
         assertEquals(model.getSetName(), "a title")

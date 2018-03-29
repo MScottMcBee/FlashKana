@@ -34,15 +34,15 @@ class DatabaseWrapper(context: Context) {
     }
 
     fun insert(flashBlockName: String, flashBlockDescription: String) {
-        masterdb.flashBlockDAO().insert(FlashBlockData(null, flashBlockName, flashBlockDescription))
+        masterdb.flashBlockDAO().insert(FlashBlockData(flashBlockName, flashBlockDescription))
     }
 
     fun insert(flashCardAnswer: String, flashCardQuestion: String, flashCardType: String) {
-        masterdb.flashCardDAO().insert(FlashCardData(null, flashCardAnswer, flashCardQuestion, flashCardType))
+        masterdb.flashCardDAO().insert(FlashCardData(flashCardAnswer, flashCardQuestion, flashCardType))
     }
 
     fun insert(flashBlockID: Int?, flashCardID: Int?) {
-        masterdb.linkDAO().insert(LinkData(null, flashBlockID, flashCardID))
+        masterdb.linkDAO().insert(LinkData(flashBlockID, flashCardID))
     }
 
     fun emptyDatabase() {
@@ -76,6 +76,33 @@ class DatabaseWrapper(context: Context) {
             insert(flashBlockID, getFlashCardIDByQuestion(kanaObjects[i].glyph))
         }
     }
+
+    fun getFlashBlockScores(flashBlockID: Int): List<Int> {
+        return masterdb.linkDAO().getScores(flashBlockID)
+    }
+
+    fun getFlashBlockStatViewed(flashBlockID: Int): Int {
+        return masterdb.flashBlockDAO().getStatViewed(flashBlockID)
+    }
+
+    fun getFlashBlockStatQuizzed(flashBlockID: Int): Int {
+        return masterdb.flashBlockDAO().getStatQuizzed(flashBlockID)
+    }
+
+    fun incrementFlashBlockCardsViewed(flashBlockID: Int, cardsViewed: Int){
+        masterdb.flashBlockDAO().updateStatViewed(flashBlockID, cardsViewed + getFlashBlockStatViewed(flashBlockID))
+    }
+
+    fun incrementFlashBlockCardsQuizzed(flashBlockID: Int, cardsQuizzed: Int){
+        masterdb.flashBlockDAO().updateStatQuizzed(flashBlockID, cardsQuizzed + getFlashBlockStatQuizzed(flashBlockID))
+    }
+
+    fun updateFlashBlockCardScore(flashBlockID: Int, glyph: String, score: Int){
+        val flashCardID  = masterdb.flashCardDAO().getIDByQuestion(glyph)
+        val currentScore = masterdb.linkDAO().getCardScore(flashBlockID, flashCardID)
+        masterdb.linkDAO().updateCardScore(flashBlockID, flashCardID, ((currentScore*.67)+(score*.33)).toInt())
+    }
+
 
     fun defaultDatabase() {
 
