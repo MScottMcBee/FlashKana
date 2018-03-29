@@ -2,7 +2,8 @@ package com.mscottmcbee.flashkana.model
 
 import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
 
-class GenericModel(val title: String = "title", val description: String = "description", private val flashBlockUID: Int = 0) : IFlashCardModel {
+class GenericModel(val title: String = "title", val description: String = "description", private val flashBlockUID: Int = 0,
+                   val subTitle:String, val color:Int) : IFlashCardModel {
 
     var flashCards = mutableListOf<KanaObject>()
     private var cardScores = mutableListOf<Int>()
@@ -24,7 +25,11 @@ class GenericModel(val title: String = "title", val description: String = "descr
     }
 
     override fun getSetSubtitle(): String {
-        return "hji"
+        return subTitle
+    }
+
+    override fun getSetColor(): Int {
+        return color
     }
 
     override fun addCards(cards: List<KanaObject>) {

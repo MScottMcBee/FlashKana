@@ -5,6 +5,7 @@ interface IFlashCardModel {
     fun getSetName(): String
     fun getSetSubtitle(): String
     fun getSetDescription(): String
+    fun getSetColor(): Int
     fun addCards(cards: List<KanaObject>)
     fun removeCards()
     fun populateStats()

@@ -20,6 +20,7 @@
         android:background="@color/cardview_light_background">
 
         <FrameLayout
+            android:id="@+id/color_bar"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:background="#bc2626"
@@ -101,8 +102,10 @@
             <TextView
                 android:id="@+id/recycleitem_main_popout_view"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
                 android:background="@android:color/white"
                 android:text="View"
                 android:textAlignment="center"
@@ -119,7 +122,9 @@
             <TextView
                 android:id="@+id/recycleitem_main_popout_multiple"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@android:color/white"
                 android:text="!????"
                 android:textAlignment="center"
@@ -131,13 +136,14 @@
                 app:layout_constraintEnd_toStartOf="@+id/recycleitem_main_popout_quiz"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_view"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/recycleitem_main_popout_quiz"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@android:color/white"
                 android:text="QUIZ"
                 android:textAlignment="center"
@@ -149,14 +155,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/recycleitem_main_popout_details"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_multiple"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/recycleitem_main_popout_details"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="4dp"
+                android:layout_marginTop="8dp"
                 android:background="@android:color/white"
                 android:text="Deets"
                 android:textAlignment="center"
@@ -167,8 +174,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_quiz"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </android.support.constraint.ConstraintLayout>

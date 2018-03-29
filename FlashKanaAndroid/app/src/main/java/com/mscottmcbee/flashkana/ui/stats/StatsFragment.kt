@@ -22,14 +22,14 @@ class StatsFragment : android.support.v4.app.Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater?.inflate(R.layout.fragment_stats, container, false)!!
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        flashCardSet = ModelProvider.instance.getModelByID(arguments.getInt("id"))
+        flashCardSet = ModelProvider.instance.getModelByID(arguments?.getInt("id")!!)
         flashCardSet.populateStats()
 
         val mainAdapter = CardScoreRecyclerAdapter(flashCardSet)

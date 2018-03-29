@@ -13,7 +13,9 @@ class ModelProvider {
             models.add(GenericModel(
                     flashBlocks[i].flashBlockName,
                     flashBlocks[i].flashBlockDescription,
-                    flashBlocks[i].id))
+                    flashBlocks[i].id,
+                    flashBlocks[i].flashBlockSubTitle,
+                    flashBlocks[i].flashBlockColor))
         }
     }
 
@@ -43,5 +45,8 @@ class ModelProvider {
 
     fun getSubTitle(id: Int): String {
         return models[id].getSetSubtitle()
+    }
+    fun getSubColor(id: Int): Int {
+        return models[id].getSetColor()
     }
 }

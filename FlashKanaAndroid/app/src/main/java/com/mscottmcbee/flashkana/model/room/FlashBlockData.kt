@@ -10,11 +10,11 @@ data class FlashBlockData(@PrimaryKey(autoGenerate = true) var id: Int = 0,
                           @ColumnInfo(name = "flashBlockName") var flashBlockName: String = "",
                           @ColumnInfo(name = "flashBlockDescription") var flashBlockDescription: String = "",
                           @ColumnInfo(name = "flashBlockStatViewed") var flashBlockStatViewed: Int = 0,
-                          @ColumnInfo(name = "flashBlockStatQuizzed") var flashBlockStatQuizzed: Int = 0
+                          @ColumnInfo(name = "flashBlockStatQuizzed") var flashBlockStatQuizzed: Int = 0,
+                          @ColumnInfo(name = "flashBlockSubTitled") var flashBlockSubTitle: String = "",
+                          @ColumnInfo(name = "flashBlockColor") var flashBlockColor: Int = 0
 
 ) {
-    constructor(name: String, description: String) : this(0, name, description, 0, 0)
+    constructor(name: String, description: String, subTitle:String, color:Int) : this(0, name, description, 0, 0, subTitle, color)
 
-    @ColumnInfo(name = "flashBlockSubtitle")
-    val subTitle:String = "「ねとられ」"
 }

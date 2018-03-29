@@ -2,6 +2,7 @@ package com.mscottmcbee.flashkana.model.room
 
 import android.arch.persistence.room.Room
 import android.content.Context
+import android.graphics.Color
 import com.mscottmcbee.flashkana.model.KanaObject
 
 
@@ -33,8 +34,8 @@ class DatabaseWrapper(context: Context) {
         return masterdb.flashBlockDAO().getIDByTitle(flashBlockTitle)
     }
 
-    fun insert(flashBlockName: String, flashBlockDescription: String) {
-        masterdb.flashBlockDAO().insert(FlashBlockData(flashBlockName, flashBlockDescription))
+    fun insert(flashBlockName: String, flashBlockDescription: String, subTitle:String, color:Int) {
+        masterdb.flashBlockDAO().insert(FlashBlockData(flashBlockName, flashBlockDescription,subTitle, color))
     }
 
     fun insert(flashCardAnswer: String, flashCardQuestion: String, flashCardType: String) {
@@ -105,14 +106,13 @@ class DatabaseWrapper(context: Context) {
 
 
     fun defaultDatabase() {
-
         if (getFlashBlocks().isNotEmpty()) {
             return
         }
 
-        insert("Hiragana", "The first 50 hiragana gojuin")
-        insert("Katakana", "The first 50 katakana gojuin")
-        insert("Testing", "This is a test")
+        insert("Hiragana", "The first 50 hiragana gojuin", "「ひらがな一」",  Color.parseColor("#3860c6"))
+        insert("Katakana", "The first 50 katakana gojuin", "「カタカナ一」", Color.parseColor("#bc2626"))
+        insert("Testing", "This is a test", "「クソ」", Color.BLACK)
 
         val testing: Array<KanaObject> = arrayOf(
                 KanaObject("a", "a"),
