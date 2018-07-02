@@ -1,10 +1,26 @@
 package com.mscottmcbee.flashkana.ui.kanaview
 
 import android.databinding.ObservableField
-import android.databinding.ObservableList
+import android.view.View
+import com.mscottmcbee.flashkana.model.IFlashCardModel
 
-class KanaViewViewModel(){
+class KanaViewViewModel(private val flashCardSet: IFlashCardModel){
 
-    val hello = ObservableField<String>("hey")
+    var glyph = ObservableField<String>("")
+    var answer = ObservableField<String>("")
+
+    init {
+        showNewCard()
+    }
+
+    fun onClick(view: View){
+        showNewCard()
+    }
+
+    private fun showNewCard(){
+        var card = flashCardSet.getRandomCard()
+        glyph.set(card.glyph)
+        answer.set(card.answer)
+    }
 
 }

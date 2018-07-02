@@ -1,9 +1,8 @@
-package com.mscottmcbee.flashkana.ui.kanaview
+/*package com.mscottmcbee.flashkana.ui.kanaview
 
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 
-class KanaViewPresenter(val view: KanaViewContract.View, private val flashCardSet: IFlashCardModel)
-    : KanaViewContract.Presenter {
+class KanaViewPresenter(val view: KanaViewContract.View, private val flashCardSet: IFlashCardModel) {
 
     private var cardsViewed = 0
 
@@ -25,4 +24,4 @@ class KanaViewPresenter(val view: KanaViewContract.View, private val flashCardSe
         cardsViewed = 0
     }
 
-}
+}*/
