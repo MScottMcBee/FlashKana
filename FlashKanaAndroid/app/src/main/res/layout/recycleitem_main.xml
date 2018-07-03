@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="genericModel"
+            type="com.mscottmcbee.flashkana.model.GenericModel" />
+        <variable
+            name="viewModel"
+            type="com.mscottmcbee.flashkana.ui.main.KanaSetViewModel" />
+    </data>
+
+
+<android.support.v7.widget.CardView
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,7 +25,8 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     app:cardCornerRadius="4dp"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:onClick="@{viewModel::toggleExpand}">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,7 +37,7 @@
             android:id="@+id/color_bar"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:background="#bc2626"
+            android:background="@{genericModel.color}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +50,7 @@
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Title"
+            android:text="@{genericModel.title}"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -51,7 +65,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Title"
+            android:text="@{genericModel.subTitle}"
             android:textAllCaps="true"
             android:textColor="#99ffffff"
             android:textSize="18sp"
@@ -68,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:text="Description"
+            android:text="@{genericModel.description}"
             android:textColor="#707070"
             app:layout_constraintEnd_toStartOf="@+id/expand_thing"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +107,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:background="@color/cardview_light_background"
-            android:visibility="visible"
+            android:visibility="@{viewModel.expanded}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -171,6 +185,7 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:visibility="visible"
+                android:onClick="@{viewModel::onDeetsClicked}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_quiz"
@@ -179,90 +194,8 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <!--
-        <Button
-            android:id="@+id/recycleitem_main_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#00000000"
-            app:layout_constraintBottom_toBottomOf="@+id/recycleitem_main_imageview"
-            app:layout_constraintEnd_toEndOf="@+id/recycleitem_main_imageview"
-            app:layout_constraintStart_toStartOf="@+id/recycleitem_main_imageview"
-            app:layout_constraintTop_toTopOf="@+id/recycleitem_main_imageview" />
-
-        <ImageView
-            android:id="@+id/recycleitem_main_imageview"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:color/holo_blue_dark" />
-
-
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/recycleitem_main_popout"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="100dp"
-            android:background="@android:color/holo_blue_light"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/recycleitem_main_button">
-
-            <Button
-                android:id="@+id/recycleitem_main_popout_view"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="View"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/recycleitem_main_popout_multiple"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:text="Multiple Choice"
-                app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_view"
-                app:layout_constraintTop_toTopOf="@+id/recycleitem_main_popout_view" />
-
-            <Button
-                android:id="@+id/recycleitem_main_popout_quiz"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:text="Quiz"
-                app:layout_constraintStart_toEndOf="@+id/recycleitem_main_popout_multiple"
-                app:layout_constraintTop_toTopOf="@+id/recycleitem_main_popout_view" />
-
-            <Button
-                android:id="@+id/recycleitem_main_popout_details"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginTop="8dp"
-                android:text="More"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </android.support.constraint.ConstraintLayout>
-
-        -->
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
+
+</layout>

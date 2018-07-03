@@ -11,6 +11,7 @@ class GenericModel(val title: String = "title", val description: String = "descr
     private var cardsViewed = 0
     private var cardsQuizzed = 0
     private var databaseWrapper = DatabaseWrapper.instance
+    var id = -1
 
     override fun getRandomCard(): KanaObject {
         return flashCards[(Math.random() * flashCards.size).toInt()]

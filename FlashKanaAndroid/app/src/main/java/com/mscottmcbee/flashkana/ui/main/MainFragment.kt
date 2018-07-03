@@ -1,6 +1,7 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mscottmcbee.flashkana.R
+import com.mscottmcbee.flashkana.databinding.FragmentMainBinding
 import com.mscottmcbee.flashkana.ui.kanaview.KanaViewActivity
 import com.mscottmcbee.flashkana.ui.kanaquiz.KanaQuizActivity
 import com.mscottmcbee.flashkana.ui.kanaquiz.StatsActivity
@@ -27,20 +29,34 @@ class MainFragment : Fragment(), MainContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)!!
+        var viewModel = MainViewModel()
+
+        var binding: FragmentMainBinding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_main,container,false)
+        binding.viewmodel = viewModel
+
+
+        viewModel.adapter.setMainRecyclerInterface(presenter.getRecyclerHandler())
+        (binding.recyclerviewMain as RecyclerView).apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = viewModel.adapter
+
+            presenter.setup()
+        }
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainAdapter = KanaSetRecyclerAdapter()
+     /*   val mainAdapter = KanaSetRecyclerAdapter()
         mainAdapter.setMainRecyclerInterface(presenter.getRecyclerHandler())
         (recyclerview_main as RecyclerView).apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = mainAdapter
 
             presenter.setup()
-        }
+        }*/
     }
 
     override fun onFlashCardSetClicked(id: Int) {

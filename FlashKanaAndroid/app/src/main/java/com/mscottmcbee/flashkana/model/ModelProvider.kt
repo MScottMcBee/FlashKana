@@ -15,7 +15,7 @@ class ModelProvider {
                     flashBlocks[i].flashBlockDescription,
                     flashBlocks[i].id,
                     flashBlocks[i].flashBlockSubTitle,
-                    flashBlocks[i].flashBlockColor))
+                    flashBlocks[i].flashBlockColor).also{it.id = i})
         }
     }
 
@@ -49,4 +49,9 @@ class ModelProvider {
     fun getSubColor(id: Int): Int {
         return models[id].getSetColor()
     }
+
+    fun getModel(index: Int):GenericModel{
+        return models[index]
+    }
+
 }
