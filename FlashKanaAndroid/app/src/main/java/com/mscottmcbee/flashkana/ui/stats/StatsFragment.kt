@@ -1,18 +1,19 @@
 package com.mscottmcbee.flashkana.ui.stats
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mscottmcbee.flashkana.R
+import com.mscottmcbee.flashkana.R.id.recyclerview_stats
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.ModelProvider
-import kotlinx.android.synthetic.main.fragment_stats.*
 
 
-class StatsFragment : android.support.v4.app.Fragment() {
+class StatsFragment : Fragment() {
 
     private lateinit var flashCardSet: IFlashCardModel
 
@@ -37,11 +38,11 @@ class StatsFragment : android.support.v4.app.Fragment() {
             layoutManager = GridLayoutManager(activity, 3)
             adapter = mainAdapter
         }
-
+/*
         fragment_stats_title.text = flashCardSet.getSetName()
         fragment_stats_description.text = flashCardSet.getSetDescription()
         fragment_stats_overallscore.text = flashCardSet.getStatsScore().toString()
         fragment_stats_numviewed.text = flashCardSet.getStatsViewed().toString()
-        fragment_stats_numquizzed.text = flashCardSet.getStatsQuizzed().toString()
+        fragment_stats_numquizzed.text = flashCardSet.getStatsQuizzed().toString()*/
     }
 }

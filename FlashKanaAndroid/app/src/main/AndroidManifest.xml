@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,22 +18,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.kanaview.KanaViewActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:name=".ui.kanaview.KanaViewFragment"
+            android:parentActivityName=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.kanaquiz.KanaQuizActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.kanaquiz.StatsActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

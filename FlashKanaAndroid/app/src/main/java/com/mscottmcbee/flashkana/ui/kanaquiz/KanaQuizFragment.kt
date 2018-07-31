@@ -2,19 +2,18 @@ package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import android.animation.AnimatorInflater
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.fragment.app.Fragment
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.KanaObject
 import kotlinx.android.synthetic.main.fragment_quiz_view.*
 
-class KanaQuizFragment : Fragment(), KanaQuizContract.View {
+class KanaQuizFragment : Fragment(){
 
-    override lateinit var presenter: KanaQuizContract.Presenter
     private lateinit var fadein: Animation
 
     companion object {
@@ -29,7 +28,7 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+/*
         fragment_quiz_view_answer1.setOnClickListener { _ ->
             presenter.onAnswerClicked(0)
         }
@@ -42,18 +41,20 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
         fragment_quiz_view_answer4.setOnClickListener { _ ->
             presenter.onAnswerClicked(3)
         }
-
+*/
         fadein = AnimationUtils.loadAnimation(activity, R.anim.fade_in)
         fadein.fillAfter = true
 
-        presenter.setup()
+      //  presenter.setup()
     }
 
-    override fun showKana(kanaObject: KanaObject) {
+    fun showKana(kanaObject: KanaObject) {
         fragment_quiz_view_glyph.text = kanaObject.glyph
     }
 
-    override fun showAnswer(answer: String, index: Int) {
+
+
+     fun showAnswer(answer: String, index: Int) {
         when (index) {
             0 -> fragment_quiz_view_answer1
             1 -> fragment_quiz_view_answer2
@@ -67,7 +68,7 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
         }
     }
 
-    override fun fadeOutAnswer(index: Int) {
+    fun fadeOutAnswer(index: Int) {
         when (index) {
             0 -> fragment_quiz_view_answer1
             1 -> fragment_quiz_view_answer2
@@ -83,6 +84,6 @@ class KanaQuizFragment : Fragment(), KanaQuizContract.View {
 
     override fun onPause() {
         super.onPause()
-        presenter.updateCardsQuizzed()
+       // presenter.updateCardsQuizzed()
     }
 }

@@ -1,11 +1,10 @@
 package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.ModelProvider
-import com.mscottmcbee.flashkana.ui.ActivityUtils
 import com.mscottmcbee.flashkana.ui.stats.StatsFragment
 
 class StatsActivity : AppCompatActivity() {
@@ -27,9 +26,9 @@ class StatsActivity : AppCompatActivity() {
 
         val bundle = Bundle()
         bundle.putInt("id", id)
-        fragment.arguments = bundle
+      //  fragment.arguments = bundle
 
-        ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.stats_fragment_holder)
+      //  ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.stats_fragment_holder)
     }
 
 }

@@ -1,11 +1,8 @@
 package com.mscottmcbee.flashkana.ui.kanaquiz
 
-import com.mscottmcbee.flashkana.model.IFlashCardModel
-import com.mscottmcbee.flashkana.model.KanaObject
-import java.util.*
-
+/*
 class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSet: IFlashCardModel)
-    : KanaQuizContract.Presenter {
+    :  {
 
     companion object {
         const val TOTAL_QUESTIONS = 10
@@ -24,11 +21,11 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         view.presenter = this
     }
 
-    override fun setup() {
+     fun setup() {
         resetQuestion()
     }
 
-    override fun onAnswerClicked(index: Int) {
+     fun onAnswerClicked(index: Int) {
         if (correctAnswer == index && kanaUsed[index] != "") { //if the answer is right and buttons haven't already been cleared
             numCorrect++
             currentQuestion++
@@ -91,4 +88,4 @@ class KanaQuizPresenter(val view: KanaQuizContract.View, private val flashCardSe
         cardsQuizzed = 0
     }
 
-}
+}*/

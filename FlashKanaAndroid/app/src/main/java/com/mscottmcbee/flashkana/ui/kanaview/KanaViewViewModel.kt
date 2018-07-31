@@ -1,7 +1,7 @@
 package com.mscottmcbee.flashkana.ui.kanaview
 
-import android.databinding.ObservableField
 import android.view.View
+import androidx.databinding.ObservableField
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 
 class KanaViewViewModel(private val flashCardSet: IFlashCardModel){

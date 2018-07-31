@@ -1,32 +1,35 @@
 package com.mscottmcbee.flashkana.ui.main
 
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableInt
-import android.util.Log
+import android.os.Bundle
 import android.view.View
+import androidx.databinding.ObservableInt
+import androidx.navigation.Navigation
+import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.GenericModel
+import com.mscottmcbee.flashkana.ui.kanaview.KanaViewFragment
 
 class KanaSetViewModel(var model: GenericModel){
 
-    var expanded:ObservableInt = ObservableInt(View.GONE)
+    var expanded: ObservableInt = ObservableInt(View.VISIBLE)
 
-    fun toggleExpand(view: View){
-        when(expanded.get()){
+    fun toggleExpand(v: View){
+     /*   when(expanded.get()){
             View.VISIBLE -> expanded.set(View.GONE)
             else ->  expanded.set(View.VISIBLE)
-        }
+        }*/
     }
 
     fun onViewClicked(view: View){
-        Log.d("AAAAAA","view ${model.id}")
+        var bundle = Bundle().apply{putInt(KanaViewFragment.Model_ID,model.id)}
+        Navigation.findNavController(view).navigate(R.id.main_to_kanaview,bundle)
     }
 
     fun onQuizClicked(view: View){
-        Log.d("AAAAAA","quiz ${model.id}")
     }
 
     fun onDeetsClicked(view: View){
-        Log.d("AAAAAA","deets ${model.id}")
+        var x: String? = null
+        x!!.get(2)
     }
 
 }

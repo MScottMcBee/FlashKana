@@ -1,14 +1,14 @@
 package com.mscottmcbee.flashkana.model.room
 
-import android.arch.persistence.room.Room
 import android.content.Context
 import android.graphics.Color
+import androidx.room.Room
 import com.mscottmcbee.flashkana.model.KanaObject
 
 
 class DatabaseWrapper(context: Context) {
 
-    private val masterdb = Room.databaseBuilder(context, MasterDatabase::class.java, "Master.db")
+    private val masterdb:MasterDatabase = Room.databaseBuilder<MasterDatabase>(context, MasterDatabase::class.java, "Master.db")
             .allowMainThreadQueries()
             .build()
 
@@ -24,11 +24,11 @@ class DatabaseWrapper(context: Context) {
         return masterdb.linkDAO().getLinksByFlashBlockID(flashBlockID)
     }
 
-    fun getFlashCardAsKanaObject(flashCardID: Int?): KanaObject {
+   /* fun getFlashCardAsKanaObject(flashCardID: Int?): KanaObject {
         masterdb.flashCardDAO().getFlashCard(flashCardID).run {
             return KanaObject(flashCardAnswer, flashCardQuestion)
         }
-    }
+    }*/
 
     fun getFlashBlockIDByTitle(flashBlockTitle: String): Int? {
         return masterdb.flashBlockDAO().getIDByTitle(flashBlockTitle)

@@ -11,7 +11,7 @@
             type="com.mscottmcbee.flashkana.ui.kanaview.KanaViewViewModel" />
     </data>
 
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -56,6 +56,6 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_kana_view_glyph"
         android:text="@{viewmodel.answer}"
         tools:text="A" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

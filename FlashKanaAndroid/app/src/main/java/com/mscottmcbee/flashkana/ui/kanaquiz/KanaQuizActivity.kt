@@ -1,11 +1,10 @@
 package com.mscottmcbee.flashkana.ui.kanaquiz
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import com.mscottmcbee.flashkana.model.ModelProvider
-import com.mscottmcbee.flashkana.ui.ActivityUtils
 
 class KanaQuizActivity : AppCompatActivity() {
 
@@ -23,9 +22,9 @@ class KanaQuizActivity : AppCompatActivity() {
         title = flashCardSet.getSetName()
 
         val fragment: KanaQuizFragment = KanaQuizFragment.newInstance()
-        KanaQuizPresenter(fragment, flashCardSet)
+        //KanaQuizPresenter(fragment, flashCardSet)
 
-        ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.quiz_view_fragment_holder)
+    //    ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.quiz_view_fragment_holder)
     }
 
 }

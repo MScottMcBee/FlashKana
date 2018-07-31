@@ -1,9 +1,8 @@
-package com.mscottmcbee.flashkana.ui.main
+package com.mscottmcbee.flashkana.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.mscottmcbee.flashkana.R
-import com.mscottmcbee.flashkana.ui.ActivityUtils
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,9 +10,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+/*
         val fragment: MainFragment = MainFragment.newInstance()
         MainPresenter(fragment)
 
-        ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.main_fragment_holder)
+        ActivityUtils.addFragment(supportFragmentManager, fragment, R.id.main_fragment_holder)*/
     }
+
+
+   // override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
+
+
 }

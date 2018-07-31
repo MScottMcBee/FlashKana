@@ -1,9 +1,10 @@
 package com.mscottmcbee.flashkana.model.room
 
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import android.arch.persistence.room.Update
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.Update
+
 
 interface BaseDAO<T> {
 

@@ -1,7 +1,7 @@
 package com.mscottmcbee.flashkana.model.room
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 
 
 @Database(entities = arrayOf(FlashBlockData::class, LinkData::class, FlashCardData::class), version = 1)

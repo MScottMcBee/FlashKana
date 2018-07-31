@@ -1,9 +1,9 @@
 package com.mscottmcbee.flashkana.ui.stats
 
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.ColorUtils
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import androidx.recyclerview.widget.RecyclerView
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.model.IFlashCardModel
 import kotlinx.android.synthetic.main.recycleitem_stats.view.*

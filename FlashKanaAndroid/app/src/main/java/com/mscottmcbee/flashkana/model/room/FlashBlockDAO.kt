@@ -1,7 +1,8 @@
 package com.mscottmcbee.flashkana.model.room
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Query
+import androidx.room.Dao
+import androidx.room.Query
+
 
 @Dao
 interface FlashBlockDAO : BaseDAO<FlashBlockData> {
