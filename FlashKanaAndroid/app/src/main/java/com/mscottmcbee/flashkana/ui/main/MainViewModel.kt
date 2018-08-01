@@ -1,6 +1,8 @@
 package com.mscottmcbee.flashkana.ui.main
 
-class MainViewModel{
+import androidx.lifecycle.ViewModel
+
+class MainViewModel : ViewModel(){
 
 
     var adapter:KanaSetRecyclerAdapter = KanaSetRecyclerAdapter()
