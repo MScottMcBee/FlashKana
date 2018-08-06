@@ -1,98 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/fragment_quiz_view_glyph"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:textSize="150sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="あ" />
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mscottmcbee.flashkana.ui.cardquiz.CardQuizViewModel" />
+    </data>
 
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="72dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-        <Button
-            android:id="@+id/fragment_quiz_view_answer1"
-            android:layout_width="72dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/fragment_quiz_view_glyph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="150sp"
+            android:text="@{viewmodel.glyph}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="あ" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="72dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="#0f000000"
-            android:includeFontPadding="false"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            tools:text="a" />
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="72dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/fragment_quiz_view_answer2"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="#0f000000"
-            android:includeFontPadding="false"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            tools:text="b" />
+            <Button
+                android:id="@+id/fragment_quiz_view_answer1"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="#0f000000"
+                android:includeFontPadding="false"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:onClick="@{(view) -> viewmodel.onClick(0)}"
+                android:text="@{viewmodel.possibleAnswers[0]}"
+                tools:text="a" />
 
-        <Button
-            android:id="@+id/fragment_quiz_view_answer3"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="#0f000000"
-            android:includeFontPadding="false"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            tools:text="cc" />
+            <Button
+                android:id="@+id/fragment_quiz_view_answer2"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="#0f000000"
+                android:includeFontPadding="false"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:onClick="@{(view) -> viewmodel.onClick(1)}"
+                android:text="@{viewmodel.possibleAnswers[1]}"
+                tools:text="b" />
 
-        <Button
-            android:id="@+id/fragment_quiz_view_answer4"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="#0f000000"
-            android:includeFontPadding="false"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            tools:text="ddd" />
+            <Button
+                android:id="@+id/fragment_quiz_view_answer3"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="#0f000000"
+                android:includeFontPadding="false"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:onClick="@{(view) -> viewmodel.onClick(2)}"
+                android:text="@{viewmodel.possibleAnswers[2]}"
+                tools:text="cc" />
+
+            <Button
+                android:id="@+id/fragment_quiz_view_answer4"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="#0f000000"
+                android:includeFontPadding="false"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                android:onClick="@{(view) -> viewmodel.onClick(3)}"
+                android:text="@{viewmodel.possibleAnswers[3]}"
+                tools:text="ddd" />
 
 
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

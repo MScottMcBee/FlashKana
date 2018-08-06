@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mscottmcbee.flashkana.R
 import com.mscottmcbee.flashkana.databinding.FragmentMainBinding
+import com.mscottmcbee.flashkana.ui.main.recycler.KanaSetRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
@@ -30,7 +32,13 @@ class MainFragment : Fragment() {
         var binding: FragmentMainBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_main,container,false)
         binding.viewmodel = viewModel
 
-        activity?.title = "FLAShKANa"
+        activity?.title = "FlashKana"
+
+
+        (activity as AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity)?.supportActionBar?.setDisplayShowHomeEnabled(false)
+
+        // activity
 
         return binding.root
     }

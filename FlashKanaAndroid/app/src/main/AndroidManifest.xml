@@ -25,14 +25,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.kanaquiz.KanaQuizActivity"
+            android:name=".ui.cardquiz.KanaQuizActivity"
             android:parentActivityName=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.kanaquiz.StatsActivity"
+            android:name=".ui.cardquiz.StatsActivity"
             android:parentActivityName=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

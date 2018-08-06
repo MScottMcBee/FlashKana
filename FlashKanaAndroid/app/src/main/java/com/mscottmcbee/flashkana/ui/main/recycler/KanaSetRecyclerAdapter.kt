@@ -1,4 +1,4 @@
-package com.mscottmcbee.flashkana.ui.main
+package com.mscottmcbee.flashkana.ui.main.recycler
 
 
 import android.view.LayoutInflater

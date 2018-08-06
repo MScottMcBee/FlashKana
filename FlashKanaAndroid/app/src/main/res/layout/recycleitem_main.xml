@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.mscottmcbee.flashkana.ui.main.KanaSetViewModel" />
+            type="com.mscottmcbee.flashkana.ui.main.recycler.KanaSetViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -129,6 +129,7 @@
                 android:layout_marginEnd="12dp"
                 android:padding="12dp"
                 android:background="@android:color/white"
+                android:onClick="@{viewModel::onQuizClicked}"
                 android:text="@string/quiz"
                 android:textAlignment="center"
                 android:textAllCaps="false"

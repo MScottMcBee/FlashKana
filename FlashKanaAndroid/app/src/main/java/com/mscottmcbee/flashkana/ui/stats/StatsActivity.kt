@@ -1,4 +1,4 @@
-package com.mscottmcbee.flashkana.ui.kanaquiz
+package com.mscottmcbee.flashkana.ui.cardquiz
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

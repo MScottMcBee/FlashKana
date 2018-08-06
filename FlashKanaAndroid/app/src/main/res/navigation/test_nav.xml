@@ -10,9 +10,16 @@
         <action
             android:id="@+id/main_to_kanaview"
             app:destination="@id/kanaViewFragment" />
+        <action
+            android:id="@+id/main_to_cardquiz"
+            app:destination="@id/cardQuizFragment" />
     </fragment>
     <fragment
         android:id="@+id/kanaViewFragment"
         android:name="com.mscottmcbee.flashkana.ui.kanaview.KanaViewFragment"
         android:label="KanaViewFragment" />
+    <fragment
+        android:id="@+id/cardQuizFragment"
+        android:name="com.mscottmcbee.flashkana.ui.cardquiz.CardQuizFragment"
+        android:label="CardQuizFragment" />
 </navigation>
