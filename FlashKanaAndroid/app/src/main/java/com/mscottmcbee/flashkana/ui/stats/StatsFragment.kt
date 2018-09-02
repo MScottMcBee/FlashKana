@@ -8,14 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mscottmcbee.flashkana.R
-import com.mscottmcbee.flashkana.R.id.recyclerview_stats
-import com.mscottmcbee.flashkana.model.IFlashCardModel
-import com.mscottmcbee.flashkana.model.ModelProvider
+import com.mscottmcbee.flashkana.model.dataobjects.CardSet
+import kotlinx.android.synthetic.main.fragment_stats.*
 
 
 class StatsFragment : Fragment() {
 
-    private lateinit var flashCardSet: IFlashCardModel
+    private lateinit var flashCardSet: CardSet
 
     companion object {
         fun newInstance(): StatsFragment {
@@ -30,8 +29,8 @@ class StatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        flashCardSet = ModelProvider.instance.getModelByID(arguments?.getInt("id")!!)
-        flashCardSet.populateStats()
+        //      flashCardSet = ModelProvider.instance.getModelByID(arguments?.getInt("id")!!)
+        //      flashCardSet.populateStats()
 
         val mainAdapter = CardScoreRecyclerAdapter(flashCardSet)
         (recyclerview_stats as RecyclerView).apply {

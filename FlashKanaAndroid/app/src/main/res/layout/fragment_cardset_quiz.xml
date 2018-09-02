@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.mscottmcbee.flashkana.ui.cardquiz.quiz.CardsetQuizViewModel" />
+        <import type="java.lang.Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg">
+
+        <TextView
+            android:id="@+id/fragment_quiz_view_glyph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{viewmodel.glyph}"
+            android:textSize="150sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="W" />
+
+        <TextView
+            android:id="@+id/results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{viewmodel.results}"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_quiz_view_glyph"
+            tools:text="success"/>
+
+        <TextView
+            android:id="@+id/spree_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="spree"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="spree" />
+
+        <TextView
+            android:id="@+id/spree_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text='@{Integer.toString(viewmodel.spree)}'
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/spree_label"
+            app:layout_constraintTop_toBottomOf="@+id/spree_label"
+            tools:text="40" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="280dp"
+            android:layout_height="184dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/results">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editText"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:imeOptions="actionGo"
+                android:inputType="textVisiblePassword|textCapCharacters"
+                android:maxLength="3"
+                android:onTextChanged="@{viewmodel::onTextChanged}"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:text="@{viewmodel.answerAttempt}"
+                android:textAlignment="center"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@+id/fragment_quiz_submit_answer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Answer?" />
+
+            <Button
+                android:id="@+id/fragment_quiz_submit_answer"
+                android:layout_width="100dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="#0f000000"
+                android:includeFontPadding="false"
+                android:onClick="@{(view) -> viewmodel.onClick()}"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Ok"
+                android:textAllCaps="false"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

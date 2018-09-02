@@ -5,12 +5,12 @@
 
     <data>
         <variable
-            name="genericModel"
-            type="com.mscottmcbee.flashkana.model.GenericModel" />
+            name="cardSet"
+            type="com.mscottmcbee.flashkana.model.dataobjects.CardSet" />
 
         <variable
             name="viewModel"
-            type="com.mscottmcbee.flashkana.ui.main.recycler.KanaSetViewModel" />
+            type="com.mscottmcbee.flashkana.ui.main.recycler.CardSetViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -33,23 +33,23 @@
             android:background="@color/cardview_light_background">
 
             <FrameLayout
-                android:id="@+id/recycleitem_main_color_bar"
+                android:id="@+id/viewholder_cardset_color_bar"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="48dp"
                 android:alpha="12"
-                android:background="@{genericModel.color}"
+                android:background="@{cardSet.drawableColor}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:background="@color/colorPrimary" />
 
             <TextView
-                android:id="@+id/recycleitem_main_title"
+                android:id="@+id/viewholder_cardset_title"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@{genericModel.title}"
+                android:layout_marginTop="8dp"
+                android:text="@{cardSet.title}"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -58,27 +58,27 @@
                 tools:text="Hiragana 1" />
 
             <TextView
-                android:id="@+id/recycleitem_main_title2"
+                android:id="@+id/viewholder_cardset_title2"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="center_vertical|start"
-                android:text="@{genericModel.subTitle}"
+                android:text="@{cardSet.subTitle}"
                 android:textAllCaps="true"
                 android:textColor="#99ffffff"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/recycleitem_main_star"
-                app:layout_constraintStart_toEndOf="@+id/recycleitem_main_title"
+                app:layout_constraintEnd_toStartOf="@+id/viewholder_cardset_star"
+                app:layout_constraintStart_toEndOf="@+id/viewholder_cardset_title"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="「ひらがな一」" />
 
             <ImageView
-                android:id="@+id/recycleitem_main_star"
+                android:id="@+id/viewholder_cardset_star"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="12dp"
                 android:alpha=".5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -86,21 +86,21 @@
                 app:srcCompat="@drawable/ic_empty_star" />
 
             <TextView
-                android:id="@+id/recycleitem_main_description"
+                android:id="@+id/viewholder_cardset_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@{genericModel.description}"
+                android:text="@{cardSet.description}"
                 android:textColor="#707070"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycleitem_main_title"
+                app:layout_constraintTop_toBottomOf="@+id/viewholder_cardset_title"
                 tools:text="Sometimes you gotta just dig in and learn some weird letters" />
 
             <TextView
-                android:id="@+id/recycleitem_main_popout_view"
+                android:id="@+id/viewholder_cardset_popout_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -116,11 +116,11 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@+id/recycleitem_main_description"
-                app:layout_constraintEnd_toStartOf="@+id/recycleitem_main_popout_quiz"/>
+                app:layout_constraintTop_toBottomOf="@+id/viewholder_cardset_description"
+                app:layout_constraintEnd_toStartOf="@+id/viewholder_cardset_popout_quiz"/>
 
             <TextView
-                android:id="@+id/recycleitem_main_popout_quiz"
+                android:id="@+id/viewholder_cardset_popout_quiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -136,7 +136,7 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@+id/recycleitem_main_description"
+                app:layout_constraintTop_toBottomOf="@+id/viewholder_cardset_description"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

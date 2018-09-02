@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.mscottmcbee.flashkana.R
+import com.mscottmcbee.flashkana.model.dataobjects.CardSet
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,5 +14,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp() = findNavController(R.id.my_nav_host_fragment).navigateUp()
-
 }
+

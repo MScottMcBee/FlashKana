@@ -1,15 +1,12 @@
 package com.mscottmcbee.flashkana.application
 
-import android.app.Application
-import com.mscottmcbee.flashkana.model.*
-import com.mscottmcbee.flashkana.model.room.DatabaseWrapper
+import androidx.multidex.MultiDexApplication
+import org.koin.android.ext.android.startKoin
 
-class FKApplication : Application() {
+class FKApplication : MultiDexApplication() {
 
     override fun onCreate() {
-        DatabaseWrapper.instance = DatabaseWrapper(applicationContext)
-        DatabaseWrapper.instance.defaultDatabase()
-        ModelProvider.instance = ModelProvider()
         super.onCreate()
+        startKoin(this, listOf(fkModules))
     }
 }

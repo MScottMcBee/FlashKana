@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.mscottmcbee.flashkana.ui.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/main_to_kanaview"
+            app:destination="@id/kanaViewFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/main_to_picker"
+            app:destination="@id/quizPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kanaViewFragment"
+        android:name="com.mscottmcbee.flashkana.ui.cardreview.CardsetReviewFragment"
+        android:label="KanaViewFragment" />
+    <fragment
+        android:id="@+id/cardQuizFragment"
+        android:name="com.mscottmcbee.flashkana.ui.cardquiz.quiz.CardsetQuizFragment"
+        android:label="CardQuizFragment" />
+    <fragment
+        android:id="@+id/cardsetMCQuizFragment"
+        android:name="com.mscottmcbee.flashkana.ui.cardquiz.multiplechoice.CardsetMCQuizFragment"
+        android:label="CardsetMCQuizFragment" />
+    <fragment
+        android:id="@+id/quizPickerFragment"
+        android:name="com.mscottmcbee.flashkana.ui.cardquiz.quizpicker.QuizPickerFragment"
+        android:label="QuizPickerFragment" >
+        <action
+            android:id="@+id/picker_to_quiz"
+            app:destination="@id/cardQuizFragment" />
+        <action
+            android:id="@+id/picker_to_mc"
+            app:destination="@id/cardsetMCQuizFragment" />
+    </fragment>
+</navigation>

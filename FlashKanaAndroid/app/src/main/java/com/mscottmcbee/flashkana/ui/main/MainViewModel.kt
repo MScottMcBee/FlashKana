@@ -1,11 +1,10 @@
 package com.mscottmcbee.flashkana.ui.main
 
 import androidx.lifecycle.ViewModel
-import com.mscottmcbee.flashkana.ui.main.recycler.KanaSetRecyclerAdapter
+import com.mscottmcbee.flashkana.model.Repository
 
-class MainViewModel : ViewModel(){
+class MainViewModel(private val repository: Repository) : ViewModel() {
 
-
-    var adapter: KanaSetRecyclerAdapter = KanaSetRecyclerAdapter()
+    fun getCardSets() = repository.getCardSets()
 
 }

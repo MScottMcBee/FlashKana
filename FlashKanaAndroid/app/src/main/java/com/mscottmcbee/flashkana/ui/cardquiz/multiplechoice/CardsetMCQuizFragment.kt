@@ -1,4 +1,4 @@
-package com.mscottmcbee.flashkana.ui.kanaview
+package com.mscottmcbee.flashkana.ui.cardquiz.multiplechoice
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,31 +7,31 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.mscottmcbee.flashkana.R
-import com.mscottmcbee.flashkana.databinding.FragmentKanaViewBinding
+import com.mscottmcbee.flashkana.databinding.FragmentCardsetQuizBinding
+import com.mscottmcbee.flashkana.databinding.FragmentCardsetQuizMcBinding
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.core.parameter.parametersOf
 
-
-class KanaViewFragment : Fragment() {
+class CardsetMCQuizFragment : Fragment() {
 
     companion object {
         const val Model_ID: String = "model_id"
     }
 
-    var setId = 0
+    var setId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
-        setId = arguments?.getInt(Model_ID, 0) ?: 0
+        setId = arguments?.getString(Model_ID, "") ?: ""
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        var binding: FragmentKanaViewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_kana_view, container, false)
+        var viewModelMC: CardsetMCQuizViewModel = getViewModel { parametersOf(setId) }
 
-        var viewmodel = ViewModelProviders.of(this, KanaViewViewModelFactory(setId)).get(KanaViewViewModel::class.java)
-        binding.viewmodel = viewmodel
-        activity?.title = viewmodel.getCardSetTitle()
+        var binding: FragmentCardsetQuizMcBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_cardset_quiz_mc, container, false)
+        binding.viewmodel = viewModelMC
+        activity?.title = viewModelMC.getCardSetTitle()
 
         (activity as AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity)?.supportActionBar?.setDisplayShowHomeEnabled(true)

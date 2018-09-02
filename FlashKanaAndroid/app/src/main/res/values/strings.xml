@@ -7,5 +7,8 @@
     <string name="kana_view_another_button">Look at another</string>
     <string name="quiz_view_another_button">Look at another</string>
 
+    <string name="quiz_picker_mc">multiple choice</string>
+    <string name="quiz_picker_quiz">write in</string>
+
 
 </resources>

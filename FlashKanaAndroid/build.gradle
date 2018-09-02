@@ -9,6 +9,7 @@ buildscript {
         maven {
             url 'https://maven.fabric.io/public'
         }
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha04"
@@ -29,6 +30,7 @@ allprojects {
         maven {
             url 'https://maven.google.com/'
         }
+        maven { url "https://jitpack.io" }
     }
 }
 

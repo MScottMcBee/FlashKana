@@ -8,13 +8,14 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.mscottmcbee.flashkana.ui.kanaview.KanaViewViewModel" />
+            type="com.mscottmcbee.flashkana.ui.cardreview.CardsetReviewViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <Button
         android:id="@+id/fragment_kana_view_button"

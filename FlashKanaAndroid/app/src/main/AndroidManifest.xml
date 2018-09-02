@@ -13,29 +13,7 @@
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.kanaview.KanaViewFragment"
-            android:parentActivityName=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.cardquiz.KanaQuizActivity"
-            android:parentActivityName=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.cardquiz.StatsActivity"
-            android:parentActivityName=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
     </application>

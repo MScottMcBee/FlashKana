@@ -14,8 +14,33 @@
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable
+-keepattributes Signature
+-keepattributes *Annotation*
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+#-verbose
+#-dontnote
+#-keepnames class com.mscottmcbee.flashkana.**  { *; }
+
+#some shit I found online
+-keep class kotlin.** { *; }
+-keep class kotlin.Metadata { *; }
+-dontwarn kotlin.**
+-keepclassmembers class **$WhenMappings {
+    <fields>;
+}
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+-assumenosideeffects class kotlin.jvm.internal.Intrinsics {
+    static void checkParameterIsNotNull(java.lang.Object, java.lang.String);
+}
+
+-keep class com.google.firebase.** {*;}
