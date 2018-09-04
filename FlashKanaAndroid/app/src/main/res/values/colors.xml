@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="bg">#ddd</color>
     <color name="white">#fff</color>
+    <color name="correct_answer">#20f060</color>
+
+    <color name="wrong_answer">#f02060</color>
 </resources>
