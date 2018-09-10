@@ -33,9 +33,9 @@ class CardsetMCQuizViewModel(cardSetId: String, repository: Repository) : ViewMo
 
     private fun showNewCard() {
         possibleAnswers.clear()
-        var card = cardSet.getRandomCard()
+        var card: Card = cardSet.getRandomCard() ?: return
         while (lastCard == card) {
-            card = cardSet.getRandomCard()
+            card = cardSet.getRandomCard() ?: return
         }
         lastCard = card
 
@@ -43,10 +43,10 @@ class CardsetMCQuizViewModel(cardSetId: String, repository: Repository) : ViewMo
         possibleAnswers.add(card.answers.random())
         for (i in 0 until 3) {
             var newCard = cardSet.getRandomCard()
-            while (possibleAnswers.contains(newCard.answers.random())) {
+            while (possibleAnswers.contains(newCard?.answers?.random())) {
                 newCard = cardSet.getRandomCard()
             }
-            possibleAnswers.add(newCard.answers.random())
+            possibleAnswers.add(newCard?.answers?.random())
         }
         possibleAnswers.shuffle()
         correctIndex = possibleAnswers.indexOf(card.answers.random())

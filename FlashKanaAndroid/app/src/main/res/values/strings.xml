@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">FlashKana</string>
-
     <string name="review">REVIEW</string>
     <string name="quiz">QUIZ</string>
 
@@ -9,6 +7,4 @@
 
     <string name="quiz_picker_mc">multiple choice</string>
     <string name="quiz_picker_quiz">write in</string>
-
-
 </resources>

@@ -31,7 +31,6 @@ class CardsetQuizViewModel(cardSetId: String, repository: Repository) : ViewMode
     var answerAttempt: ObservableField<String> = ObservableField("")
 
     var results: MutableLiveData<String> = MutableLiveData<String>().also { it.value="" }
-    var resultsAlpha: ObservableField<Float> = ObservableField(0f)
     var spree: ObservableField<Int> = ObservableField(0)
 
     private var misses: Int = 0
@@ -84,9 +83,9 @@ class CardsetQuizViewModel(cardSetId: String, repository: Repository) : ViewMode
     }
 
     private fun showNewCard() {
-        currentCard = cardSet.getRandomCard()
+        currentCard = cardSet.getRandomCard() ?: return
         while (lastCard == currentCard) {
-            currentCard = cardSet.getRandomCard()
+            currentCard = cardSet.getRandomCard()?: return
         }
         lastCard = currentCard
 

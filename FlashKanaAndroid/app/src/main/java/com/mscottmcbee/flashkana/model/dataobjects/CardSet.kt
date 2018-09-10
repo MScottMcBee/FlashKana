@@ -18,7 +18,7 @@ class CardSet() {
     var drawableColor: Int = Color.MAGENTA
         get() = Color.parseColor("#" + color)
 
-    fun getRandomCard(): Card {
+    fun getRandomCard(): Card? {
         return cards.random()
     }
 

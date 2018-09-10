@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.mscottmcbee.flashkana.model.Repository
 import com.mscottmcbee.flashkana.model.dataobjects.CardSet
 
-class CardsetReviewViewModel(cardSetId: String, repository: Repository) : ViewModel() {
+open class CardsetReviewViewModel(cardSetId: String, repository: Repository) : ViewModel() {
 
     private var cardSet: CardSet = repository.getCardSetByID(cardSetId) ?: CardSet()
     var glyph = ObservableField<String>("")
@@ -26,8 +26,8 @@ class CardsetReviewViewModel(cardSetId: String, repository: Repository) : ViewMo
 
     private fun showNewCard() {
         var card = cardSet.getRandomCard()
-        glyph.set(card.question)
-        answer.set(card.answers.first())
+        glyph.set(card?.question)
+        answer.set(card?.answers?.first())
     }
 
 }
